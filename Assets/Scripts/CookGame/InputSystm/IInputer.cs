@@ -1,18 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class IInputer : MonoBehaviour
+public delegate void InputDelgate(MouseClick mouseClick);
+interface IInputer
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    event InputDelgate InputEvent;
+}
+public enum MouseClick{
+    RightClick,
+    LeftClick
 }
