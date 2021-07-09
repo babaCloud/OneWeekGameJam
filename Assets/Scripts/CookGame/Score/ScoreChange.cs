@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 using sakuGame.BGM;
-using sakuGame.Guzai;
 namespace sakuGame
 {
     namespace Score
@@ -12,21 +11,23 @@ namespace sakuGame
         {
             [Inject]
             IWhenEndBgm whenEndBgm;
-            [Inject]
-            IJudgeEndTime judgeEnd;
-            // Start is called before the first frame update
+
+            // ポイント
+            private int Point = default;
+            // 最大ポイント
+            private int MaxPoint = default;
+            // 投げられるゴミの数
+            private int MaxTrash = default;
+            // ゴミの名前
+            private List<ItemNames> Trash;
+
             void Start()
             {
                 whenEndBgm.EndGameEvent += FinalScoreSend;
-
             }
 
             // Update is called once per frame
             void Update()
-            {
-
-            }
-            void InGuzai()
             {
 
             }
@@ -36,8 +37,13 @@ namespace sakuGame
                 //  こいつの戻り値voidじゃないわすまん
             }
 
+            void ReceiveItem(ItemNames guzai)
+            {
+
+            }
+
         }
 
     }
-
+    
 }
