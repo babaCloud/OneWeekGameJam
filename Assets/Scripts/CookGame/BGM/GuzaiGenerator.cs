@@ -1,18 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class GuzaiGenerator : MonoBehaviour
+namespace sakuGame
 {
-    // Start is called before the first frame update
-    void Start()
+    namespace BGM
     {
-        
-    }
+        public class GuzaiGenerator : MonoBehaviour,IWhen_SlowTiming
+        {
+            public event NowRhythmStrage NowRhythmEvent;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+            // Start is called before the first frame update
+            void Start()
+            {
+
+            }
+
+            // Update is called once per frame
+            void Update()
+            {
+
+            }
+        }
+
     }
 }
+

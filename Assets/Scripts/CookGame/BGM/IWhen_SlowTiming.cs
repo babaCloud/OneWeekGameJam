@@ -1,18 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class IWhen_SlowTiming : MonoBehaviour
+namespace sakuGame.BGM
 {
-    // Start is called before the first frame update
-    void Start()
+    public delegate void NowRhythmStrage();
+    interface IWhen_SlowTiming
     {
-        
+        event NowRhythmStrage NowRhythmEvent;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
