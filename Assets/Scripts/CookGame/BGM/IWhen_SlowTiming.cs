@@ -1,9 +1,12 @@
 namespace sakuGame.BGM
 {
-    public delegate void NowRhythmStorage();
+    public delegate void NowSlowStorage(GuzaiEnum guzaiEnum);
     interface IWhen_SlowTiming
     {
-        event NowRhythmStorage NowRhythmEvent;
+        event NowSlowStorage NowSlowEvent;
     }
-
+    public enum GuzaiEnum
+    {
+        Carrot,other
+    }
 }

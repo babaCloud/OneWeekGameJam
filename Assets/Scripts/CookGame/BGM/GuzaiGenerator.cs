@@ -7,7 +7,7 @@ namespace sakuGame
     {
         public class GuzaiGenerator : MonoBehaviour,IWhen_SlowTiming
         {
-            public event NowRhythmStorage NowRhythmEvent;
+            public event NowSlowStorage NowSlowEvent;
 
             // Start is called before the first frame update
             void Start()

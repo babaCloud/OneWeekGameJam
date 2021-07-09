@@ -10,6 +10,8 @@ public class UntitledInstaller : MonoInstaller
     GameObject InputObj;
     [SerializeField]
     GameObject TempoObj;
+    [SerializeField]
+    GameObject CanslashObj;
     public override void InstallBindings()
     {
         //.AsSingle　シングルトンのあつかい
@@ -24,6 +26,7 @@ public class UntitledInstaller : MonoInstaller
             .To<Inputer>()
             .FromComponentOn(InputObj)
             .AsCached();
+
         Container.Bind<IWhen_RhythmTiming>()
             .To<TempoGenerator>()
             .FromComponentOn(TempoObj)
@@ -36,5 +39,15 @@ public class UntitledInstaller : MonoInstaller
            .To<TempoGenerator>()
            .FromComponentOn(TempoObj)
            .AsCached();
+
+        Container.Bind<IJudgeEndTime>()
+            .To<CanSlashJudge>()
+            .FromComponentOn(CanslashObj)
+            .AsCached();
+        Container.Bind<IGuzaiSlash>()
+            .To<CanSlashJudge>()
+            .FromComponentOn(CanslashObj)
+            .AsTransient();
+        
     }
 }

@@ -13,10 +13,11 @@ namespace sakuGame.Guzai
         [Inject]
         IInputer inputer;
 
-
         public event NowSlashStorage NowSlashEvent;//素材を切った時に走ったイベント
         public event JudgeTimeEndStorage JudgeTime;//野菜を切れる時間が終わったら発行　点数おくるよ
 
+        [SerializeField] Guzai_Core core;
+        bool CanSlash;
 
         // Start is called before the first frame update
         void Start()
