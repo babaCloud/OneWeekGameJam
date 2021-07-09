@@ -8,7 +8,7 @@ namespace sakuGame.InputSystem
     {
         public event InputDelgate InputEvent;
 
-        [SerializeField] IInputer inputer;
+        [SerializeField] IInputer inputer;  
         // Start is called before the first frame update
         void Start()
         {

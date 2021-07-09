@@ -1,18 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public class Guzai_Core : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private enum GuzaiName
     {
-        
+        Carrot,Potato,Etc
+            ,Num
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
+    [SerializeField] private GuzaiName guzaiName;
+    [Header("êÿÇÍÇÈâÒêî")]
+    [SerializeField] private int SlashNum;
 }

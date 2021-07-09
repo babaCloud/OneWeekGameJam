@@ -1,18 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class IJudgeEndTime : MonoBehaviour
+namespace sakuGame.Guzai
 {
-    // Start is called before the first frame update
-    void Start()
+    public delegate void JudgeTimeEndStorage();
+    interface IJudgeEndTime
     {
-        
+        event JudgeTimeEndStorage JudgeTime;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

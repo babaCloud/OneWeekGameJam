@@ -1,9 +1,9 @@
 namespace sakuGame.BGM
 {
-    public delegate void NowRhythmStrage();
+    public delegate void NowRhythmStorage();
     interface IWhen_SlowTiming
     {
-        event NowRhythmStrage NowRhythmEvent;
+        event NowRhythmStorage NowRhythmEvent;
     }
 
 }

@@ -1,18 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class Player_Animation : MonoBehaviour
+using sakuGame.InputSystem;
+using Zenject;
+namespace sakuGame
 {
-    // Start is called before the first frame update
-    void Start()
+    namespace Player
     {
-        
+        public class Player_Animation : MonoBehaviour
+        {
+            [Inject]
+            IInputer inputer;
+            // Start is called before the first frame update
+            void Start()
+            {
+                inputer.InputEvent += SlashAnim;
+            }
+
+            // Update is called once per frame
+            void Update()
+            {
+
+            }
+            void SlashAnim(MouseClick mouseClick)//ƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚½‚Æ‚«
+            {
+
+            }
+        }
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
