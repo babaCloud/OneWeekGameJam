@@ -11,7 +11,16 @@ namespace sakuGame
         {
             [Inject]
             IWhenEndBgm whenEndBgm;
-            // Start is called before the first frame update
+
+            // ポイント
+            private int Point = default;
+            // 最大ポイント
+            private int MaxPoint = default;
+            // 投げられるゴミの数
+            private int MaxTrash = default;
+            // ゴミの名前
+            private List<ItemNames> Trash;
+
             void Start()
             {
                 whenEndBgm.EndGameEvent += FinalScoreSend;
@@ -28,8 +37,13 @@ namespace sakuGame
                 //  こいつの戻り値voidじゃないわすまん
             }
 
+            void ReceiveItem(ItemNames guzai)
+            {
+
+            }
+
         }
 
     }
-
+    
 }
