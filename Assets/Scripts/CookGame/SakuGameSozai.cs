@@ -1,6 +1,6 @@
 namespace sakuGame
 {
-    enum ItemNames
+    public enum ItemNames
     {
         Carrot,
         Potato,

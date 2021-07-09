@@ -7,7 +7,6 @@ using sakuGame.InputSystem;
 namespace sakuGame.Guzai
 {
 
-
     public class CanSlashJudge : MonoBehaviour, IGuzaiSlash, IJudgeEndTime
     {
         [Inject]
@@ -19,10 +18,12 @@ namespace sakuGame.Guzai
         [SerializeField] Guzai_Core core;
         bool CanSlash;
 
+        private bool isSlashed;
         // Start is called before the first frame update
         void Start()
         {
             inputer.InputEvent += GuzaiSlashed;
+            
         }
 
         // Update is called once per frame
@@ -34,6 +35,11 @@ namespace sakuGame.Guzai
         {
 
         }
+        public void CallJudgeEndEvent(ItemNames itemNames,bool isslash)
+        {
+            JudgeTime(itemNames,isslash);
+        }
+
     }
 
 }
