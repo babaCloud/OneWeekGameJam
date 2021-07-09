@@ -1,18 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class IWhen_RhythmTiming : MonoBehaviour
+namespace sakuGame.BGM
 {
-    // Start is called before the first frame update
-    void Start()
+    public delegate void RhythmTimingStorage();
+    interface IWhen_RhythmTiming
     {
-        
+        event RhythmTimingStorage RhythmTimingEvent;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
+
