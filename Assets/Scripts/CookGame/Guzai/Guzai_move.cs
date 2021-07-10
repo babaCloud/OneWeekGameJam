@@ -101,7 +101,7 @@ public class Guzai_move : MonoBehaviour
             y = speedY * sin * time - (1 / 2 * GRAVITY * Mathf.Pow(time, 2));
             guzai.transform.position = new Vector2(guzaiPos.x + x, guzaiPos.y + y);
 
-            notesTime = moveData.endTime - time;
+            notesTime = moveData.endTime - time - 0.5f;
 
             NotesJudge();
         }
@@ -136,7 +136,7 @@ public class Guzai_move : MonoBehaviour
 
     void FirstNotes()
     {
-        if (notesTime <= 0)//カウントダウンした時間が0になったら
+        if (notesTime <= 0.0f)//カウントダウンした時間が0になったら
         {
             isAudioPlay = true;
 
@@ -148,10 +148,13 @@ public class Guzai_move : MonoBehaviour
 
     void GuzaiJude()
     {
-
+        bool isOK = Math.Abs(guzai.transform.position.x - endObj.transform.position.x) < 1.5f &&
+                    Math.Abs(guzai.transform.position.y - endObj.transform.position.y) < 1.5f + 2.671417f;
+        bool isNO = (guzai.transform.position.x - endObj.transform.position.x) < -1.5f &&
+                    (guzai.transform.position.y - endObj.transform.position.y) < -1.5f + 2.671417f;
 
         //一拍の30%秒の時間判定可能
-        if (Math.Abs(notesTime) <= 60.0f / 130.0f * 0.5f)
+        if (isOK)
         {
             Debug.Log("ok");
 
@@ -170,7 +173,7 @@ public class Guzai_move : MonoBehaviour
                 this.gameObject.SetActive(false);
             }
         }
-        else if (notesTime < 60 / 130 * -0.5f)
+        else if (isNO)
         {
             Debug.Log("in");
             RecyclingInitialization();
@@ -182,8 +185,13 @@ public class Guzai_move : MonoBehaviour
 
     void TrushJudge()
     {
+        bool isOK = Math.Abs(guzai.transform.position.x - endObj.transform.position.x) < 1.5f &&
+                    Math.Abs(guzai.transform.position.y - endObj.transform.position.y) < 1.5f + 2.671417f;
+        bool isNO = (guzai.transform.position.x - endObj.transform.position.x) < -1.5f &&
+                    (guzai.transform.position.y - endObj.transform.position.y) < -1.5f + 2.671417f;
+
         //一拍の30%秒の時間判定可能
-        if (Math.Abs(notesTime) <= 60 / 130 * 0.5f)
+        if (isOK)
         {
             if (Input.GetKeyDown(KeyCode.Return))
             {
@@ -198,7 +206,7 @@ public class Guzai_move : MonoBehaviour
                 this.gameObject.SetActive(false);
             }
         }
-        else if (notesTime < 60 / 130 * -0.5f)
+        else if (isNO)
         {
             //入れた具材生成
 
@@ -212,7 +220,7 @@ public class Guzai_move : MonoBehaviour
     /// </summary>
     void RecyclingInitialization()
     {
-
+        Debug.Log(notesTime);
         time = 0;
         x = 0;
         y = 0;

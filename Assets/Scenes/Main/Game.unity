@@ -195,16 +195,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 554dcfec03652ec4e8227a0a0a665b63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreData: {fileID: 0}
-  judgePlace: {fileID: 0}
-  insPlace: {fileID: 0}
-  firstObj: {fileID: 0}
-  vegetableObj: {fileID: 0}
-  meetObj: {fileID: 0}
-  keyObj: {fileID: 0}
-  dustObj: {fileID: 0}
+  scoreData: {fileID: 4900000, guid: e0ce0e288dca48340b37fde427778d44, type: 3}
+  judgePlace: {fileID: 8531982398966349550, guid: cfbc8ed72517eb6499732b6605cef992, type: 3}
+  insPlace: {fileID: 762559703569901446, guid: 01658aff18d467b4a940d622449dfa8c, type: 3}
+  firstObj: {fileID: 6663552633763347076, guid: f304aeedfb6ac9941b8d6ee14be5829c, type: 3}
+  vegetableObj: {fileID: 8717240419596426057, guid: 753091318f437cf42b0001cb56dbd6bf, type: 3}
+  meetObj: {fileID: 5368392555563456390, guid: 9ed0df8ffe4cfc047ace322b5298c64f, type: 3}
+  keyObj: {fileID: 3910428682032487989, guid: 208242dd8f2a8b84aa355bc5c2918bcd, type: 3}
+  dustObj: {fileID: 308907306441992238, guid: 6271203fb7662a04481180fa6ad37692, type: 3}
   inputDeleagate2Obj: {fileID: 0}
-  gameAudio: {fileID: 0}
+  gameAudio: {fileID: 7683632338080329700}
 --- !u!4 &7683632336617614033
 Transform:
   m_ObjectHideFlags: 0
