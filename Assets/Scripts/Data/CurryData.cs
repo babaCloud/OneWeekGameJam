@@ -1,9 +1,12 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "CurryData", menuName = "DataObject/CurryData")]
-public class CurryData : ScriptableObject
+namespace Result
 {
-    public string rank;
-    public string curryName;
-    public Sprite image;
+    [CreateAssetMenu(fileName = "CurryData", menuName = "DataObject/CurryData")]
+    public class CurryData : ScriptableObject
+    {
+        public CurryRank rank;
+        public string curryName;
+        public Sprite image;
+    }
 }
