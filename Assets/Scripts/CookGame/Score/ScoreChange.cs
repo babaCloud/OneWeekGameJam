@@ -14,14 +14,29 @@ namespace sakuGame
             IWhenEndBgm whenEndBgm;
             [Inject]
             IJudgeEndTime judgeEnd;
+
+            [SerializeField]
+            ScoreData scoreData;
+
             // ポイント
-            private int Point = default;
+            private int score = 0;
             // 最大ポイント
-            private int MaxPoint = default;
-            // 投げられるゴミの数
-            private int MaxTrash = default;
-            // ゴミの名前
-            private List<ItemNames> Trash;
+            private int maxScore = 0;
+            // 投げられるごみの数
+            private int maxTrash = 0;
+            // 鍋に入ったごみの名前
+            private List<ItemNames> trashList;
+            // ルーが入ったか
+            private bool isInRoux = false;
+
+            // 切れた具材のポイント
+            private int pointCut = 300;
+            // 切れなかった具材のポイント
+            private int pointNotCut = -100;
+            // 普通のごみのポイント
+            private int pointNomalTrash = -300;
+            // 名を冠するごみのポイント
+            private int pointNamedTrash = -500;
 
             void Start()
             {
@@ -34,15 +49,56 @@ namespace sakuGame
             {
 
             }
+
             void FinalScoreSend()
             {
-                //スコアの奴に送ってやって！
-                //こいつの戻り値voidじゃないわすまん
+                // 終了時にデータを書き換える
+                scoreData.ResultScore = this.score;
+                scoreData.MaxScore = this.maxScore;
+                scoreData.MaxTrash = this.maxTrash;
+                scoreData.TrashList = this.trashList;
+                scoreData.IsInRoux = this.isInRoux;
             }
 
-            void ReceiveItem(ItemNames guzai,bool isSlash)
+            void ReceiveItem(ItemNames item,bool isSlash)
             {
+                // 具材に対応したポイントを加減する
 
+                // 具材(0～10)
+                if ((int)item <= 10)
+                {
+                    if (isSlash)
+                    {
+                        score += pointCut;
+                    }
+                    else
+                    {
+                        score += pointNotCut;
+                    }
+                }
+                // 普通のごみ(15～19)
+                else if ((int)item >= 15)
+                {
+                    score += pointNomalTrash;
+                }
+                // 名を冠するごみ(20～)
+                else if ((int)item >= 20)
+                {
+                    score += pointNamedTrash;
+                    trashList.Add(item);
+                }
+
+                // ルーが入ったかどうか
+                if (item == ItemNames.CurryRoux)
+                {
+                    isInRoux = true;
+                }
+
+                // 0以下にはしない
+                if (score < 0)
+                {
+                    score = 0;
+                }
             }
 
         }
