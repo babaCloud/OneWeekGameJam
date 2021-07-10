@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b1429055c5eeee46ab1b5d9b8c5c3e3, type: 3}
   m_Name: ScoreData
   m_EditorClassIdentifier: 
-  ResultScore: 0
-  MaxScore: 0
-  InTrash: 0
-  MaxTrash: 0
-  TrashList: 
-  IsInRoux: 0
+  ResultScore: 800
+  MaxScore: 1200
+  InTrash: 5
+  MaxTrash: 13
+  TrashList: 140000001500000016000000
+  IsInRoux: 1

@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rank: 2
   curryName: "\u521D\u3081\u3066\u306E\u30AB\u30EC\u30FC"
-  image: {fileID: 21300000, guid: 5a5320778c4d6f246a4d1a8eb1426d91, type: 3}
+  image: {fileID: 21300000, guid: 3155329885f86644f98ffa0ab36d43ee, type: 3}

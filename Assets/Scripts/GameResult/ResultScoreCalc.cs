@@ -33,19 +33,16 @@ namespace Result
         // ルーが入ったか
         private bool isInRoux = false;
 
-        // 名付きごみが入ってるか
-        private bool isInGeta = false;
-        private bool isInMask = false;
-        private bool isInUtiwa = false;
-
+        // 名前つきごみのフラグ 2進数
+        // 001下駄, 010マスク, 100うちわ
+        private byte trashFlag0b = 0;
         // カレーのランク
         private CurryRank rank;
         // 付加用の名前リスト
-        private List<string> trashNamedList = new List<string>(4);
+        private List<string> namedTrashList = new List<string>(4);
 
         void Awake()
         {
-
             // データを読み取る
             this.score = scoreData.ResultScore;
             this.maxScore = scoreData.MaxScore;
@@ -54,22 +51,33 @@ namespace Result
             this.trashList = scoreData.TrashList;
             this.isInRoux = scoreData.IsInRoux;
 
+            // スコアを評価する
             rank = ScoreCheck();
             NamedCheck();
         }
 
-        public int GetRank()
+        // ごみのフラグを返す
+        public byte GetTrashFlag()
         {
-            return (int)rank;
+            return trashFlag0b;
         }
 
-        public string GetPlusNamed()
+        // ランクを返す
+        public CurryRank GetCurryRank()
         {
-            int namedNum = trashNamedList.Count;
+            return rank;
+        }
+
+        // 「〇〇と〇〇入り」の形の文字列を返す
+        public string GetTrashNameText()
+        {
+            int namedNum = namedTrashList.Count;
+
             string plusNamed = "";
+
             for (int i = 0; i < namedNum; i++)
             {
-                plusNamed += trashNamedList[i];
+                plusNamed += namedTrashList[i];
                 if (i == namedNum - 1)
                 {
                     plusNamed += "入り";
@@ -83,14 +91,12 @@ namespace Result
             return plusNamed;
         }
 
-
-        // 名を冠するリスト
+        // ごみリストをチェックして
+        // 重複のないstringのリストを作る(重そう)
         void NamedCheck()
         {
             int namedTrashNum = trashList.Count;
 
-            // ごみリストをチェックして
-            // 重複のないstringのリストを作る(重そう)
             if (namedTrashNum != 0)
             {
                 for (int i = 0; i < namedTrashNum; i++)
@@ -98,41 +104,40 @@ namespace Result
                     switch (trashList[i])
                     {
                         case ItemNames.Geta:
-                            isInGeta = true;
+                            trashFlag0b |= 0b001;
                             break;
                         case ItemNames.Mask:
-                            isInMask = true;
+                            trashFlag0b |= 0b010;
                             break;
                         case ItemNames.Utiwa:
-                            isInUtiwa = true;
+                            trashFlag0b |= 0b100;
                             break;
                     }
 
-                    // 3種類入ってるのを確認した時点でbreak
-                    if (isInGeta && isInMask && isInUtiwa)
+                    if (trashFlag0b == 0b111)
                     {
                         break;
                     }
                 }
 
-                if (isInGeta)
+                if ((trashFlag0b & 0b001) == 0b001)
                 {
-                    trashNamedList.Add("下駄");
+                    namedTrashList.Add("下駄");
                 }
-                if (isInMask)
+                if ((trashFlag0b & 0b010) == 0b010)
                 {
-                    trashNamedList.Add("マスク");
+                    namedTrashList.Add("マスク");
                 }
-                if (isInUtiwa)
+                if ((trashFlag0b & 0b100) == 0b100)
                 {
-                    trashNamedList.Add("うちわ");
+                    namedTrashList.Add("うちわ");
                 }
             }
         }
 
+        // スコア評価
         CurryRank ScoreCheck()
         {
-            // スコア評価
             // パーフェクト!!
             if (score == maxScore)
             {
