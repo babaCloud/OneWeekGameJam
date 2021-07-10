@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Guzai_move : MonoBehaviour
 {
@@ -14,9 +15,11 @@ public class Guzai_move : MonoBehaviour
     private float x;
     private float y;
     // 始点オブジェクトと終点オブジェクト
-    [SerializeField][Header("始点")]
+    [SerializeField]
+    [Header("始点")]
     private GameObject startObj;
-    [SerializeField][Header("終点")]
+    [SerializeField]
+    [Header("終点")]
     private GameObject endObj;
     // 始点→終点の距離
     private float xDist;
@@ -28,7 +31,7 @@ public class Guzai_move : MonoBehaviour
     // 演算を繰り返す時間
     private float loopTime = 0.01f;
     // フレーム数
-    private const float frame = 60f;
+    private const float FREAM = 60f;
 
     // 速度
     // y方向の速度
@@ -37,16 +40,31 @@ public class Guzai_move : MonoBehaviour
     private const float GRAVITY = 9.8f;
 
     // 角度
-    [SerializeField][Range(0f, 90f)][Header("角度")]
+    [SerializeField]
+    [Range(0f, 90f)]
+    [Header("角度")]
     private float deg = 30f;
     private float sin;
 
     // 終点時間と初速度
-    [SerializeField][Header("終点時間と初速度取得用のデータベース")]
+    [SerializeField]
+    [Header("終点時間と初速度取得用のデータベース")]
     private MoveData moveData;
+
+    public static bool isAudioPlay = false;
+    private float notesTime = 0;
+    private sakuGame.BGM.GuzaiGenerator guzaiGenerator;
+
+    [SerializeField]
+    private Sprite[] guzaiImage;
+
 
     private void Awake()
     {
+        guzaiGenerator = GameObject.Find("GuzaiGenerator").GetComponent<sakuGame.BGM.GuzaiGenerator>();
+        startObj.transform.position = new Vector2(guzaiGenerator.StartPos.x, guzaiGenerator.StartPos.y);
+        endObj.transform.position = new Vector2(guzaiGenerator.EndPos.x, guzaiGenerator.EndPos.y);
+
         // 具材の座標値を始点の座標値に合わせる
         guzai.transform.position = startObj.transform.position;
 
@@ -55,31 +73,151 @@ public class Guzai_move : MonoBehaviour
 
         // sinθ定義
         sin = Mathf.Sin(deg * Mathf.Deg2Rad);
+
+        this.gameObject.GetComponent<SpriteRenderer>().sprite = guzaiImage[UnityEngine.Random.Range(0, guzaiImage.Length)];
     }
 
-    // Start is called before the first frame update
     void Start()
     {
+        time = 0;
         InvokeRepeating("PositionMove", 0f, loopTime);
     }
 
-    // Update is called once per frame
-    void Update()
+    void PositionMove()
     {
-        
+        if (this.gameObject.activeSelf)
+        {
+            // 時間定義
+            time += Time.deltaTime;
 
-        // 時間定義
-        time += Time.deltaTime;
+            // 現在の速度を求める
+            speedY = moveData.firstSpeed * sin - GRAVITY * time;
 
-        // 現在の速度を求める
-        speedY = moveData.firstSpeed * sin - GRAVITY * time;
+            // 斜方投射
+            // x方向：等速直線運動
+            xDist = Mathf.Abs(endObj.transform.position.x - startObj.transform.position.x);
+            x -= xDist / moveData.endTime / FREAM;
+            // y方向：投げ上げ
+            y = speedY * sin * time - (1 / 2 * GRAVITY * Mathf.Pow(time, 2));
+            guzai.transform.position = new Vector2(guzaiPos.x + x, guzaiPos.y + y);
 
-        // 斜方投射
-        // x方向：等速直線運動
-        xDist = Mathf.Abs(endObj.transform.position.x - startObj.transform.position.x);
-        x += xDist / moveData.endTime / frame;
-        // y方向：投げ上げ
-        y = speedY * sin * time - (1 / 2 * GRAVITY * Mathf.Pow(time, 2));
-        guzai.transform.position = new Vector2(guzaiPos.x + x, guzaiPos.y + y);
+            notesTime = moveData.endTime - time;
+
+            NotesJudge();
+        }
+
+
+    }
+
+    void NotesJudge()
+    {
+
+        switch (this.gameObject.tag)
+        {
+            case "First":
+                FirstNotes();
+                break;
+            case "Ve":
+                GuzaiJude();
+                break;
+            case "Meet":
+                GuzaiJude();
+                break;
+            case "Key":
+                GuzaiJude();
+                break;
+            case "Dust":
+                TrushJudge();
+                break;
+        }
+
+
+    }
+
+    void FirstNotes()
+    {
+        if (notesTime <= 0)//カウントダウンした時間が0になったら
+        {
+            isAudioPlay = true;
+
+            transform.position = new Vector3(startObj.transform.position.x, startObj.transform.position.y, 0f);
+            RecyclingInitialization();
+            this.gameObject.SetActive(false);
+        }
+    }
+
+    void GuzaiJude()
+    {
+
+
+        //一拍の30%秒の時間判定可能
+        if (Math.Abs(notesTime) <= 60.0f / 130.0f * 0.5f)
+        {
+            Debug.Log("ok");
+
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                //切った生成
+                Debug.Log("cut");
+                RecyclingInitialization();
+                this.gameObject.SetActive(false);
+            }
+            else if (Input.GetKeyDown(KeyCode.Space))
+            {
+                //はじいた具材生成
+                Debug.Log("haji");
+                RecyclingInitialization();
+                this.gameObject.SetActive(false);
+            }
+        }
+        else if (notesTime < 60 / 130 * -0.5f)
+        {
+            Debug.Log("in");
+            RecyclingInitialization();
+            this.gameObject.SetActive(false);
+        }
+
+
+    }
+
+    void TrushJudge()
+    {
+        //一拍の30%秒の時間判定可能
+        if (Math.Abs(notesTime) <= 60 / 130 * 0.5f)
+        {
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                //切った生成
+                RecyclingInitialization();
+                this.gameObject.SetActive(false);
+            }
+            else if (Input.GetKeyDown(KeyCode.Space))
+            {
+                //はじいた具材生成
+                RecyclingInitialization();
+                this.gameObject.SetActive(false);
+            }
+        }
+        else if (notesTime < 60 / 130 * -0.5f)
+        {
+            //入れた具材生成
+
+            RecyclingInitialization();
+            this.gameObject.SetActive(false);
+        }
+    }
+
+    /// <summary>
+    /// もう一度利用する為に初期化しておく必要があるもの
+    /// </summary>
+    void RecyclingInitialization()
+    {
+
+        time = 0;
+        x = 0;
+        y = 0;
+        guzai.transform.position = new Vector2(startObj.transform.position.x, startObj.transform.position.y);
+        guzaiPos = startObj.transform.position;
+        this.gameObject.GetComponent<SpriteRenderer>().sprite = guzaiImage[UnityEngine.Random.Range(0, guzaiImage.Length)];
     }
 }
