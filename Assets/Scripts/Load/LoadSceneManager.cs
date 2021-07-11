@@ -12,6 +12,11 @@ public class LoadSceneManager : MonoBehaviour
 
     private float fadeTime = 0.45f;
 
+    private void Awake()
+    {
+        panel.enabled = true;
+    }
+
     // ロードされたらフェードインする
     private void Start()
     {
@@ -27,8 +32,13 @@ public class LoadSceneManager : MonoBehaviour
     // フェードアウトしてから指定されたシーンをロードする
     IEnumerator FadeOut(string _sceneName)
     {
-        Color cacheColor = panel.color;
+        // 指定されたシーンをロードする
+        AsyncOperation operation = SceneManager.LoadSceneAsync(_sceneName, LoadSceneMode.Single);
+        // 自動で切り替えない
+        operation.allowSceneActivation = false;
 
+        // フェードアウトする
+        Color cacheColor = panel.color;
         while (panel.color.a < 1)
         {
             cacheColor.a += Time.deltaTime / fadeTime;
@@ -37,14 +47,23 @@ public class LoadSceneManager : MonoBehaviour
             yield return null;
         }
 
-        Debug.Log("シーン読み込み");
-        SceneManager.LoadSceneAsync(_sceneName, LoadSceneMode.Single);
+        // 読み込み終了まで待機
+        while(operation.progress < 0.9f)
+        {
+            yield return null;
+        }
+        // ちょっと待機
+        yield return new WaitForSeconds(0.2f);
+        operation.allowSceneActivation = true;
     }
 
     // フェードイン
     IEnumerator FadeIn()
     {
         Color cacheColor = panel.color;
+
+        // ちょっと待機
+        yield return new WaitForSeconds(0.2f);
 
         while (panel.color.a > 0)
         {

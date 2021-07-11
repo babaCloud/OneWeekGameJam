@@ -20,7 +20,7 @@ namespace sakuGame
             ScoreData scoreData;
             // シーンロード君
             [SerializeField]
-            LoadSceneManager changeScene;
+            LoadSceneManager loadScene;
 
             // ポイント
             private int score = 0;
@@ -66,7 +66,8 @@ namespace sakuGame
                 scoreData.TrashList = this.trashList;
                 scoreData.IsInRoux = this.isInRoux;
 
-                changeScene.LoadScene("Result");
+                // シーンをロードする
+                loadScene.LoadScene("Result");
             }
 
             void ReceiveItem(ItemNames _item,bool _isSlash)
