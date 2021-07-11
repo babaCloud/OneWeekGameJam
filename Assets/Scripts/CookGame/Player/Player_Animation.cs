@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using sakuGame.BGM;
 using sakuGame.InputSystem;
 using Zenject;
 namespace sakuGame
@@ -11,10 +12,15 @@ namespace sakuGame
         {
             [Inject]
             IInputer inputer;
+            [Inject]
+            IWhen_RhythmTiming rhythmTiming;
+            private bool IsSlash;//今切っていたらTRUE
             // Start is called before the first frame update
             void Start()
             {
                 inputer.InputEvent += SlashAnim;
+                rhythmTiming.RhythmTimingEvent += OnRhythm;
+                IsSlash = false;
             }
 
             // Update is called once per frame
@@ -23,6 +29,14 @@ namespace sakuGame
 
             }
             void SlashAnim(MouseClick mouseClick)//ボタンが押されたとき
+            {
+                if(!IsSlash)
+                {
+                    IsSlash = false;
+                    //アニメーション
+                }
+            }
+            void OnRhythm()
             {
 
             }

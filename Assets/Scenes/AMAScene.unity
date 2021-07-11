@@ -311,8 +311,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b387a5fc6d9f6c1478f88436a5b6cb91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InputObj: {fileID: 0}
-  TempoObj: {fileID: 0}
+  InputObj: {fileID: 1651216804}
+  TempoObj: {fileID: 1595056156}
   CanslashObj: {fileID: 0}
 --- !u!4 &1557268895
 Transform:
@@ -337,6 +337,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1595056157}
+  - component: {fileID: 1595056159}
+  - component: {fileID: 1595056158}
   m_Layer: 0
   m_Name: BGM
   m_TagString: Untagged
@@ -358,6 +360,40 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1595056158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1595056156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8fe49adc21cda142885b6879901dbc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1595056159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1595056156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 554dcfec03652ec4e8227a0a0a665b63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreData: {fileID: 0}
+  judgePlace: {fileID: 0}
+  insPlace: {fileID: 0}
+  firstObj: {fileID: 0}
+  vegetableObj: {fileID: 0}
+  meetObj: {fileID: 0}
+  keyObj: {fileID: 0}
+  dustObj: {fileID: 0}
+  inputDeleagate2Obj: {fileID: 0}
+  gameAudio: {fileID: 0}
 --- !u!1 &1651216804
 GameObject:
   m_ObjectHideFlags: 0
