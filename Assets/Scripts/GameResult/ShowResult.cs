@@ -36,6 +36,9 @@ namespace Result
         // カレーの画像を表示するimageコンポーネント
         [Header("Image"), SerializeField]
         Image curryImageComp;
+        // 背景の光
+        [SerializeField]
+        Image flashImageComp;
         // ごみ3つのimageコンポーネント
         [SerializeField]
         Image GetaImageComp, MaskImageComp, UtiwaImageComp;
@@ -64,6 +67,21 @@ namespace Result
             GetaImageComp.enabled = getaActive;
             MaskImageComp.enabled = maskActive;
             UtiwaImageComp.enabled = utiwaActive;
+
+            if(rank == (int)CurryRank.S)
+            {
+                flashImageComp.enabled = true;
+                flashImageComp.color = new Color(1, 1, 1, 1 * 120 / 255f);
+            }
+            else if (rank == (int)CurryRank.A)
+            {
+                flashImageComp.enabled = true;
+                flashImageComp.color = new Color(1, 1, 1, 1 * 50 / 255f);
+            }
+            else
+            {
+                flashImageComp.enabled = false;
+            }
 
         }
 
