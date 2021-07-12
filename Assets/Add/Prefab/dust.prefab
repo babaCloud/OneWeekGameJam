@@ -100,3 +100,9 @@ MonoBehaviour:
   endObj: {fileID: 8531982398966349550, guid: cfbc8ed72517eb6499732b6605cef992, type: 3}
   deg: 65
   moveData: {fileID: 11400000, guid: 8af19024a61e6ea459425c7fd7bf77cc, type: 2}
+  guzaiImage:
+  - {fileID: 21300000, guid: e98f20afa6475e44bb4c4b903af5f06e, type: 3}
+  - {fileID: 21300000, guid: f7ecda64e152b02458447b0aa4474783, type: 3}
+  - {fileID: 21300000, guid: 0e563648773c8474b9b3c2d84ed864f9, type: 3}
+  - {fileID: 21300000, guid: 1b5d003147fa0ec4a9189769e14953ff, type: 3}
+  - {fileID: 21300000, guid: 2694be4ef1cbe8848a038b1b89ae6a90, type: 3}

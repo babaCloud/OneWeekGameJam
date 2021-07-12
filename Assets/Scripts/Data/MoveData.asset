@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bc4a9dc8bc29ce42be4cad15ad5acb9, type: 3}
   m_Name: MoveData
   m_EditorClassIdentifier: 
-  endTime: 0
-  firstSpeed: 0
+  endTime: 1.8
+  firstSpeed: 20
