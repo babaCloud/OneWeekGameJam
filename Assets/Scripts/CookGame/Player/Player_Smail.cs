@@ -7,7 +7,8 @@ public class Player_Smail : MonoBehaviour
     SpriteRenderer spr;
     Sprite Normal;
     Sprite Smail;
-    []
+    [Inject]
+
         // Start is called before the first frame update
     void Start()
     {
