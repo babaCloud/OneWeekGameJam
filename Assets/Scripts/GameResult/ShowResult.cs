@@ -27,14 +27,18 @@ namespace Result
 
 
         // ごみの名前を表示するtextコンポーネント
-        [SerializeField]
+        [Header("Text"), SerializeField]
         Text trashTextComp;
         // カレーの名前を表示する〃
         [SerializeField]
         Text curryTextComp;
+
         // カレーの画像を表示するimageコンポーネント
-        [SerializeField]
+        [Header("Image"), SerializeField]
         Image curryImageComp;
+        // ごみ3つのimageコンポーネント
+        [SerializeField]
+        Image GetaImageComp, MaskImageComp, UtiwaImageComp;
 
         void Start()
         {
@@ -56,7 +60,11 @@ namespace Result
             trashTextComp.text = namedTrashText;
             curryTextComp.text = curryName;
             curryImageComp.sprite = currySprite;
-            // フラグを使って下駄とかを表示させる
+            // ごみの表示
+            GetaImageComp.enabled = getaActive;
+            MaskImageComp.enabled = maskActive;
+            UtiwaImageComp.enabled = utiwaActive;
+
         }
 
         // 2進数のフラグを単体のboolに直す
