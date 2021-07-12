@@ -6,7 +6,7 @@ using sakuGame.Guzai;
 using sakuGame;
 using sakuGame.BGM;
 
-public class Guzai_move : MonoBehaviour,IJudgeEndTime,IMeetCut
+public class Guzai_move : MonoBehaviour,IJudgeEndTime
 {
     // オブジェクト情報
     // 具材オブジェクト

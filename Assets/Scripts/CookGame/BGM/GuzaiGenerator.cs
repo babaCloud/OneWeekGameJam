@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using sakuGame.Guzai;
 namespace sakuGame
 {
     namespace BGM
     {
 
-        public class GuzaiGenerator : MonoBehaviour, IWhen_SlowTiming,IWhen_RhythmTiming,IWhenEndBgm
+        public class GuzaiGenerator : MonoBehaviour, IWhen_SlowTiming,IWhen_RhythmTiming,IWhenEndBgm, IMeetCut
 
         {
             #region jsonのnumを読み込みたい
@@ -30,6 +31,7 @@ namespace sakuGame
             public event NowSlowStorage NowSlowEvent;//これは投げるタイミングで
             public event RhythmTimingStorage RhythmTimingEvent;//これをリズムのたびに呼んでほしい
             public event EndGameStorage EndGameEvent;//これはBGM終わったら
+            public event NowMeetCut MeetCutEvent;//肉をなげるとき
 
             [Header("譜面"), SerializeField]
             private TextAsset scoreData;//譜面のjson
