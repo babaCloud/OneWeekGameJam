@@ -16,12 +16,16 @@ namespace sakuGame
             IWhen_RhythmTiming rhythmTiming;
             private bool IsSlash;//今切っていたらTRUE
             private int SlashAnimCount;
+            Animator animatorRight;
+            Animator animatorLeft;
             // Start is called before the first frame update
             void Start()
             {
                 inputer.InputEvent += SlashAnim;
                 rhythmTiming.RhythmTimingEvent += OnRhythm;
                 IsSlash = false;
+                animatorLeft = GetComponent<Animator>();
+                animatorRight = GetComponent<Animator>();
             }
 
             // Update is called once per frame
@@ -34,14 +38,21 @@ namespace sakuGame
             {
                 if(!IsSlash)
                 {
-                    IsSlash = false;
+                    IsSlash = true;
+                    animatorLeft.SetTrigger("Cut");
+                    animatorRight.SetTrigger("Cut");
+
+
                     //アニメーション
                     StartCoroutine(AttackAnim());
                 }
             }
             void OnRhythm()
             {
-                
+                if(IsSlash)//切ってるときはしないよ
+                {
+                    //あにめ
+                }
             }
             IEnumerator AttackAnim()
             {

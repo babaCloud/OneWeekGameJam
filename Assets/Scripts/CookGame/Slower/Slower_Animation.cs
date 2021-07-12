@@ -5,16 +5,17 @@ using sakuGame.BGM;
 using Zenject;
 public class Slower_Animation : MonoBehaviour
 {
-
     [Inject]
     IWhen_RhythmTiming when_RhythmTiming;
     [Inject]
     IWhen_SlowTiming when_SlowTiming;
-    // Start is called before the first frame update
+  
     void Start()
     {
         when_RhythmTiming.RhythmTimingEvent += StayAnimaTion;
         when_SlowTiming.NowSlowEvent += SlowAnimation;
+
+        
     }
 
     // Update is called once per frame
