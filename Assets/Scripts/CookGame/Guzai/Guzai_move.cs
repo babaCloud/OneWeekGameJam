@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 using sakuGame.Guzai;
 using sakuGame;
-public class Guzai_move : MonoBehaviour,IJudgeEndTime
+public class Guzai_move : MonoBehaviour,IJudgeEndTime,IMeetCut
 {
     // オブジェクト情報
     // 具材オブジェクト
@@ -76,6 +76,8 @@ public class Guzai_move : MonoBehaviour,IJudgeEndTime
     int guzaiNum;
 
     public event JudgeTimeEndStorage JudgeTime;//あまかすすーぱーイベント
+    public event NowMeetCut MeetCutEvent;
+
     private bool IsCut;//切られた野菜かどうか
 
     private void Awake()
@@ -196,6 +198,10 @@ public class Guzai_move : MonoBehaviour,IJudgeEndTime
                 RecyclingInitialization();
                 this.gameObject.SetActive(false);
                 CallJudgeEndEvent(guzai.GetComponent<Guzai_Core>().GetItemName(), true);//スコア送る
+                if(guzai.GetComponent<Guzai_Core>().GetItemName()==ItemNames.Meat)
+                {
+                    MeetCutEvent();
+                }
             }
             else if (Input.GetKeyDown(KeyCode.Space))
             {
