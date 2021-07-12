@@ -49,6 +49,8 @@ namespace sakuGame
             [SerializeField]
             private GameObject dustObj;
             [SerializeField]
+            private GameObject hakuObj;
+            [SerializeField]
             private GameObject inputDeleagate2Obj;
 
             [SerializeField]
@@ -70,11 +72,14 @@ namespace sakuGame
             private MeetObjectPool meetObjectPool;//野菜のオブジェクトプール
             private KeyObjectPool keyObjectPool;//野菜のオブジェクトプール
             private DustObjectPool dustObjectPool;//野菜のオブジェクトプール
+            private HakuObjLObjectPool hakuObjectPool;//野菜のオブジェクトプール
+
             private const int First_MAX = 1;//野菜の最高生成個数
             private const int Vegetable_MAX = 5;//野菜の最高生成個数
             private const int Meet_MAX = 5;//肉の最高生成個数
             private const int Key_MAX = 5;//鍵の最高生成個数
             private const int Dust_MAX = 5;//鍵の最高生成個数
+            private const int HAKU_MAX = 5;//鍵の最高生成個数
 
             public Vector2 StartPos { get; private set; }
             public Vector2 EndPos { get; private set; }
@@ -96,7 +101,8 @@ namespace sakuGame
                 keyObjectPool.CreatePool(keyObj, Key_MAX);
                 dustObjectPool = GetComponent<DustObjectPool>();
                 dustObjectPool.CreatePool(dustObj, Dust_MAX);
-
+                hakuObjectPool = GetComponent<HakuObjLObjectPool>();
+                hakuObjectPool.CreatePool(hakuObj, HAKU_MAX);
 
 
                 InvokeRepeating("MaterialIns", 0, moveSpan);
@@ -149,6 +155,11 @@ namespace sakuGame
             void NotesIns()
             {
                 if (beatCount < scoreNum.Length) isBeat = (scoreNum[beatCount] == beatNum);// json上でのカウントと楽譜上でのカウントの一致
+
+                if ((beatNum - 1) % LPB == 0)
+                {
+                    hakuObjectPool.GetObject();
+                }
 
                 //生成のタイミングなら
                 if (isBeat)
