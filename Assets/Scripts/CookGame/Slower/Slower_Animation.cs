@@ -9,7 +9,7 @@ public class Slower_Animation : MonoBehaviour
     IWhen_RhythmTiming when_RhythmTiming;
     [Inject]
     IWhen_SlowTiming when_SlowTiming;
-  
+    Animator animator;
     void Start()
     {
         when_RhythmTiming.RhythmTimingEvent += StayAnimaTion;
