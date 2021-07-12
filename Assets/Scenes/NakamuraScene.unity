@@ -262,9 +262,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 04001ba88de26984c9ffb2055595bc8e, type: 2}
   - {fileID: 11400000, guid: 470144540af74434db328b32a4e2f7b9, type: 2}
   - {fileID: 11400000, guid: 4ddb30aed35a8b74ba6d6d13ed083f13, type: 2}
-  plusText: {fileID: 976828178}
-  curryText: {fileID: 642771164}
-  curryImage: {fileID: 303576149}
+  trashTextComp: {fileID: 0}
+  curryTextComp: {fileID: 0}
+  curryImageComp: {fileID: 0}
 --- !u!1 &642771161
 GameObject:
   m_ObjectHideFlags: 0
