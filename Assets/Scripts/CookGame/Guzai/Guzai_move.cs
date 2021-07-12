@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using sakuGame.Guzai;
+using sakuGame;
 public class Guzai_move : MonoBehaviour,IJudgeEndTime
 {
     // オブジェクト情報
@@ -194,6 +195,7 @@ public class Guzai_move : MonoBehaviour,IJudgeEndTime
                 Debug.Log("cut");
                 RecyclingInitialization();
                 this.gameObject.SetActive(false);
+                CallJudgeEndEvent(guzai.GetComponent<Guzai_Core>().GetItemName(), true);//スコア送る
             }
             else if (Input.GetKeyDown(KeyCode.Space))
             {
@@ -209,6 +211,7 @@ public class Guzai_move : MonoBehaviour,IJudgeEndTime
         else if (isNO)
         {
             Debug.Log("in");
+            CallJudgeEndEvent(guzai.GetComponent<Guzai_Core>().GetItemName(), false);//スコア送る
             RecyclingInitialization();
             this.gameObject.SetActive(false);
         }
@@ -255,6 +258,10 @@ public class Guzai_move : MonoBehaviour,IJudgeEndTime
             RecyclingInitialization();
             this.gameObject.SetActive(false);
         }
+    }
+    public void CallJudgeEndEvent(ItemNames itemNames, bool isslash)//これを呼ぶとスコア送ってくれる
+    {
+        JudgeTime(itemNames, isslash);//データを送るぞ
     }
 
     /// <summary>
