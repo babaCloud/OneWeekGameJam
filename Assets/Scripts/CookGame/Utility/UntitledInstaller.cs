@@ -12,6 +12,7 @@ public class UntitledInstaller : MonoInstaller
     GameObject TempoObj;
     [SerializeField]
     GameObject CanslashObj;
+    
     public override void InstallBindings()
     {
         //.AsSingle　シングルトンのあつかい
@@ -27,27 +28,34 @@ public class UntitledInstaller : MonoInstaller
             .FromComponentOn(InputObj)
             .AsCached();
 
-        Container.Bind<IWhen_RhythmTiming>()
-            .To<TempoGenerator>()
-            .FromComponentOn(TempoObj)
-            .AsCached();
-        Container.Bind<IWhen_SlowTiming>()
-            .To<TempoGenerator>()
-            .FromComponentOn(TempoObj)
-            .AsCached();
+
         Container.Bind<IWhenEndBgm>()
            .To<TempoGenerator>()
            .FromComponentOn(TempoObj)
            .AsCached();
 
+      
+        //Container.Bind<IGuzaiSlash>()
+        //    .To<CanSlashJudge>()
+        //    .FromComponentOn(CanslashObj)
+        //    .AsTransient();
+
+        Container.Bind<IMeetCut>()
+            .To<Guzai_move>()
+            .FromComponentOn(TempoObj)
+            .AsCached();
         Container.Bind<IJudgeEndTime>()
-            .To<CanSlashJudge>()
+            .To<Guzai_move>()
             .FromComponentOn(CanslashObj)
             .AsCached();
-        Container.Bind<IGuzaiSlash>()
-            .To<CanSlashJudge>()
-            .FromComponentOn(CanslashObj)
-            .AsTransient();
-        
+        Container.Bind<IWhen_RhythmTiming>()
+            .To<Guzai_move>()
+            .FromComponentOn(TempoObj)
+            .AsCached();
+        Container.Bind<IWhen_SlowTiming>()
+            .To<Guzai_move>()
+            .FromComponentOn(TempoObj)
+            .AsCached();
+
     }
 }

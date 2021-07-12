@@ -4,7 +4,9 @@ using UnityEngine;
 using System;
 using sakuGame.Guzai;
 using sakuGame;
-public class Guzai_move : MonoBehaviour,IJudgeEndTime,IMeetCut
+using sakuGame.BGM;
+
+public class Guzai_move : MonoBehaviour,IJudgeEndTime,IMeetCut,IWhen_RhythmTiming,IWhen_SlowTiming
 {
     // オブジェクト情報
     // 具材オブジェクト
@@ -77,6 +79,8 @@ public class Guzai_move : MonoBehaviour,IJudgeEndTime,IMeetCut
 
     public event JudgeTimeEndStorage JudgeTime;//あまかすすーぱーイベント
     public event NowMeetCut MeetCutEvent;
+    public event RhythmTimingStorage RhythmTimingEvent;
+    public event NowSlowStorage NowSlowEvent;
 
     private bool IsCut;//切られた野菜かどうか
 
