@@ -7,7 +7,7 @@ namespace sakuGame
     namespace BGM
     {
 
-        public class GuzaiGenerator : MonoBehaviour, IWhen_SlowTiming
+        public class GuzaiGenerator : MonoBehaviour, IWhen_SlowTiming,IWhen_RhythmTiming,IWhenEndBgm
 
         {
             #region jsonのnumを読み込みたい
@@ -27,7 +27,9 @@ namespace sakuGame
             }
             #endregion
 
-            public event NowSlowStorage NowSlowEvent;
+            public event NowSlowStorage NowSlowEvent;//これは投げるタイミングで
+            public event RhythmTimingStorage RhythmTimingEvent;//これをリズムのたびに呼んでほしい
+            public event EndGameStorage EndGameEvent;//これはBGM終わったら
 
             [Header("譜面"), SerializeField]
             private TextAsset scoreData;//譜面のjson
