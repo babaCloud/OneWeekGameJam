@@ -156,6 +156,10 @@ public class Guzai_move : MonoBehaviour,IJudgeEndTime
             case "Dust":
                 TrushJudge();
                 break;
+
+            case "Haku":
+                HakuJudge();
+                break;
         }
 
 
@@ -249,6 +253,18 @@ public class Guzai_move : MonoBehaviour,IJudgeEndTime
         {
             //ì¸ÇÍÇΩãÔçﬁê∂ê¨
 
+            RecyclingInitialization();
+            this.gameObject.SetActive(false);
+        }
+    }
+
+    void HakuJudge()
+    {
+        if (notesTime <= 0.0f)
+        {
+            //anim.Play();
+
+            transform.position = new Vector3(startObj.transform.position.x, startObj.transform.position.y, 0f);
             RecyclingInitialization();
             this.gameObject.SetActive(false);
         }
