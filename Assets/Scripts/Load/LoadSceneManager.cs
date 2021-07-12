@@ -10,7 +10,7 @@ public class LoadSceneManager : MonoBehaviour
     [SerializeField]
     public Image panel;
 
-    private float fadeTime = 0.45f;
+    private float fadeTime = 0.4f;
 
     private void Awake()
     {
