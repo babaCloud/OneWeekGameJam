@@ -114,22 +114,19 @@ public class Guzai_move : MonoBehaviour,IJudgeEndTime,IMeetCut
         if (this.gameObject.activeSelf)
         {
             // 時間定義
-            time += Time.deltaTime;
+            time += loopTime;
 
-            // 現在の速度を求める
-            speedY = moveData.firstSpeed * sin - GRAVITY * time;
+            xDist = 6.5f;
 
-            // 斜方投射
-            // x方向：等速直線運動
-            xDist = Mathf.Abs(endObj.transform.position.x - startObj.transform.position.x);
-            x -= xDist / moveData.endTime / FREAM;
-            // y方向：投げ上げ
-            y = speedY * sin * time - (1 / 2 * GRAVITY * Mathf.Pow(time, 2));
-            guzai.transform.position = new Vector2(guzaiPos.x + x, guzaiPos.y + y);
+            x -= xDist / (60.0f / 130.0f * 4) / FREAM;
+            y = -0.6f * (x + guzaiPos.x - 3.0f) * (x + guzaiPos.x - 3.0f) + 8;
 
-            notesTime = moveData.endTime - time - 0.5f;
+            guzai.transform.position = new Vector2(x + guzaiPos.x, y + guzaiPos.y);
+
+            notesTime = (60.0f / 130.0f * 4) - time;
 
             NotesJudge();
+
         }
 
 
@@ -174,16 +171,10 @@ public class Guzai_move : MonoBehaviour,IJudgeEndTime,IMeetCut
 
     void GuzaiJude()
     {
-        //マジックナンバーゴメンほんとにごめん
-        bool isOK = Math.Abs(guzai.transform.position.x - endObj.transform.position.x) < 1.5f &&
-                    Math.Abs(guzai.transform.position.y - endObj.transform.position.y) < 1.5f + 2.671417f;
-        bool isNO = (guzai.transform.position.x - endObj.transform.position.x) < -1.5f &&
-                    (guzai.transform.position.y - endObj.transform.position.y) < -1.5f + 2.671417f;
-
+        
         //一拍の30%秒の時間判定可能
-        if (isOK)
+        if (Math.Abs(notesTime) <= 60.0f / 130.0f * 0.4f)
         {
-            Debug.Log("ok");
 
             if (Input.GetKeyDown(KeyCode.Return))
             {
@@ -194,10 +185,9 @@ public class Guzai_move : MonoBehaviour,IJudgeEndTime,IMeetCut
 
                 audio.PlayOneShot(SE[0]);
 
-                Debug.Log("cut");
                 RecyclingInitialization();
                 this.gameObject.SetActive(false);
-                CallJudgeEndEvent(guzai.GetComponent<Guzai_Core>().GetItemName(), true);//スコア送る
+                //CallJudgeEndEvent(guzai.GetComponent<Guzai_Core>().GetItemName(), true);//スコア送る
                 if(guzai.GetComponent<Guzai_Core>().GetItemName()==ItemNames.Meat)
                 {
                     MeetCutEvent();
@@ -209,15 +199,13 @@ public class Guzai_move : MonoBehaviour,IJudgeEndTime,IMeetCut
 
                 audio.PlayOneShot(SE[1]);
 
-                Debug.Log("haji");
                 RecyclingInitialization();
                 this.gameObject.SetActive(false);
             }
         }
-        else if (isNO)
+        else if (notesTime < 60.0f / 130.0f * -0.4f)
         {
-            Debug.Log("in");
-            CallJudgeEndEvent(guzai.GetComponent<Guzai_Core>().GetItemName(), false);//スコア送る
+            //CallJudgeEndEvent(guzai.GetComponent<Guzai_Core>().GetItemName(), false);//スコア送る
             RecyclingInitialization();
             this.gameObject.SetActive(false);
         }
@@ -227,13 +215,9 @@ public class Guzai_move : MonoBehaviour,IJudgeEndTime,IMeetCut
 
     void TrushJudge()
     {
-        bool isOK = Math.Abs(guzai.transform.position.x - endObj.transform.position.x) < 1.5f &&
-                    Math.Abs(guzai.transform.position.y - endObj.transform.position.y) < 1.5f + 2.671417f;
-        bool isNO = (guzai.transform.position.x - endObj.transform.position.x) < -1.5f &&
-                    (guzai.transform.position.y - endObj.transform.position.y) < -1.5f + 2.671417f;
-
+      
         //一拍の30%秒の時間判定可能
-        if (isOK)
+        if (Math.Abs(notesTime) <= 60.0f / 130.0f * 0.4f)
         {
             if (Input.GetKeyDown(KeyCode.Return))
             {
@@ -257,7 +241,7 @@ public class Guzai_move : MonoBehaviour,IJudgeEndTime,IMeetCut
                 this.gameObject.SetActive(false);
             }
         }
-        else if (isNO)
+        else if (notesTime < 60.0f / 130.0f * -0.4f)
         {
             //入れた具材生成
 
@@ -265,17 +249,16 @@ public class Guzai_move : MonoBehaviour,IJudgeEndTime,IMeetCut
             this.gameObject.SetActive(false);
         }
     }
-    public void CallJudgeEndEvent(ItemNames itemNames, bool isslash)//これを呼ぶとスコア送ってくれる
-    {
-        JudgeTime(itemNames, isslash);//データを送るぞ
-    }
+    //public void CallJudgeEndEvent(ItemNames itemNames, bool isslash)//これを呼ぶとスコア送ってくれる
+    //{
+    //    JudgeTime(itemNames, isslash);//データを送るぞ
+    //}
 
     /// <summary>
     /// もう一度利用する為に初期化しておく必要があるもの
     /// </summary>
     void RecyclingInitialization()
     {
-        Debug.Log(notesTime);
         time = 0;
         x = 0;
         y = 0;
