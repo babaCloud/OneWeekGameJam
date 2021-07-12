@@ -29,6 +29,7 @@ namespace sakuGame
             {
 
             }
+            
             void SlashAnim(MouseClick mouseClick)//ƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚½‚Æ‚«
             {
                 if(!IsSlash)
@@ -40,7 +41,7 @@ namespace sakuGame
             }
             void OnRhythm()
             {
-
+                
             }
             IEnumerator AttackAnim()
             {
