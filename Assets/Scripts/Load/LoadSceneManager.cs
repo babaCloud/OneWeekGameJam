@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 public class LoadSceneManager : MonoBehaviour
 {
@@ -46,6 +47,9 @@ public class LoadSceneManager : MonoBehaviour
 
             yield return null;
         }
+
+        // DOTween‚ğ~‚ß‚é
+        DOTween.Clear(true);
 
         // “Ç‚İ‚İI—¹‚Ü‚Å‘Ò‹@
         while(operation.progress < 0.9f)
