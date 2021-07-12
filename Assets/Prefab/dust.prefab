@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 6071080327759608168}
   - component: {fileID: 4021586609351107071}
   - component: {fileID: -7458797673949538364}
+  - component: {fileID: -5169025260796432925}
+  - component: {fileID: 5666403741803199704}
   m_Layer: 10
   m_Name: dust
   m_TagString: Dust
@@ -250,4 +252,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   guzaiName: 0
-  SlashNum: 0
+--- !u!114 &-5169025260796432925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 308907306441992238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dcb9fe874524824eb881960c2ae1e55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5666403741803199704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 308907306441992238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ab0362b2c6fb3a47804fbc38ea6a1c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

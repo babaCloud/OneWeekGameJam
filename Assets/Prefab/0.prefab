@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 106664809465696744}
   - component: {fileID: 8027076286074758083}
   - component: {fileID: 119363900983158868}
+  - component: {fileID: -316683977851165733}
+  - component: {fileID: -5875790848208255841}
   m_Layer: 6
   m_Name: 0
   m_TagString: First
@@ -101,4 +103,33 @@ MonoBehaviour:
   deg: 65
   moveData: {fileID: 11400000, guid: 8af19024a61e6ea459425c7fd7bf77cc, type: 2}
   guzaiImage:
-  - {fileID: 21300000, guid: c23c3c11b924c164782f51de6a4b3e71, type: 3}
+  - {fileID: 21300000, guid: 5a5320778c4d6f246a4d1a8eb1426d91, type: 3}
+  guzaiCutImage: []
+  cutRObj: {fileID: 62577147026132191, guid: 2e9f2be286d4f104b8d06093eb589c8b, type: 3}
+  cutLObj: {fileID: 7728501084549955113, guid: b8ba052750a994c45a65f500d3bed2d8, type: 3}
+  audio: {fileID: 0}
+  SE: []
+--- !u!114 &-316683977851165733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6663552633763347076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dcb9fe874524824eb881960c2ae1e55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-5875790848208255841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6663552633763347076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ab0362b2c6fb3a47804fbc38ea6a1c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
