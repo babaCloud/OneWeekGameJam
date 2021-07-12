@@ -8,6 +8,7 @@ namespace sakuGame
     {
 
         public class GuzaiGenerator : MonoBehaviour, IWhen_SlowTiming
+
         {
             #region json‚Ìnum‚ğ“Ç‚İ‚İ‚½‚¢
             [Serializable]
