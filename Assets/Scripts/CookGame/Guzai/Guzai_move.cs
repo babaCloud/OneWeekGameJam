@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-
-public class Guzai_move : MonoBehaviour
+using sakuGame.Guzai;
+public class Guzai_move : MonoBehaviour,IJudgeEndTime
 {
     // オブジェクト情報
     // 具材オブジェクト
@@ -58,6 +58,8 @@ public class Guzai_move : MonoBehaviour
     [SerializeField]
     private Sprite[] guzaiImage;
 
+    public event JudgeTimeEndStorage JudgeTime;//あまかすすーぱーイベント
+    private bool IsCut;//切られた野菜かどうか
 
     private void Awake()
     {
