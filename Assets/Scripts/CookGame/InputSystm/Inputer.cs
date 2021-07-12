@@ -2,13 +2,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 namespace sakuGame.InputSystem
 {
     public class Inputer : MonoBehaviour, IInputer
     {
+
         public event InputDelgate InputEvent;
 
-        [SerializeField] IInputer inputer;  
+        [Inject] IInputer inputer;  
         // Start is called before the first frame update
         void Start()
         {

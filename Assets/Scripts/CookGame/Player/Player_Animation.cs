@@ -15,6 +15,7 @@ namespace sakuGame
             [Inject]
             IWhen_RhythmTiming rhythmTiming;
             private bool IsSlash;//今切っていたらTRUE
+            private int SlashAnimCount;
             // Start is called before the first frame update
             void Start()
             {
@@ -34,10 +35,16 @@ namespace sakuGame
                 {
                     IsSlash = false;
                     //アニメーション
+                    StartCoroutine(AttackAnim());
                 }
             }
             void OnRhythm()
             {
+
+            }
+            IEnumerator AttackAnim()
+            {
+                yield return new WaitForSeconds(1);
 
             }
         }

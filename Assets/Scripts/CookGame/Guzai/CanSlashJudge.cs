@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 using sakuGame.InputSystem;
+using sakuGame.BGM;
 
 namespace sakuGame.Guzai
 {
@@ -11,15 +12,15 @@ namespace sakuGame.Guzai
     {
         [Inject]
         IInputer inputer;
-
+    
         public event NowSlashStorage NowSlashEvent;//素材を切った時に走ったイベント
         public event JudgeTimeEndStorage JudgeTime;//野菜を切れる時間が終わったら発行　点数おくるよ
 
         [SerializeField] Guzai_Core core;
         bool CanSlash;
-
+        const float CANSLASHTIME = 1.0f;
         private bool isSlashed;
-        // Start is called before the first frame update
+        private float timecount;
         void Start()
         {
             inputer.InputEvent += GuzaiSlashed;
@@ -33,11 +34,18 @@ namespace sakuGame.Guzai
         }
         public void GuzaiSlashed(MouseClick mouseClick)//切られたときに割れる
         {
+            if(mouseClick==MouseClick.LeftClick)
+            {
 
+            }
+            else
+            {
+
+            }
         }
         public void CallJudgeEndEvent(ItemNames itemNames,bool isslash)
         {
-            JudgeTime(itemNames,isslash);
+            JudgeTime(itemNames,isslash);//データを送るぞ
         }
 
     }
