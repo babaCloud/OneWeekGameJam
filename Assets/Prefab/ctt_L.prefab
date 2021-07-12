@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3910428682032487989
+--- !u!1 &7728501084549955113
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,37 +8,37 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5557189809652854656}
-  - component: {fileID: 5303652012429993655}
-  - component: {fileID: 4096688868259473974}
-  m_Layer: 9
-  m_Name: key
-  m_TagString: Key
+  - component: {fileID: 7728501084549955114}
+  - component: {fileID: 7728501084549955115}
+  - component: {fileID: 7728501084549955112}
+  m_Layer: 0
+  m_Name: ctt_L
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5557189809652854656
+--- !u!4 &7728501084549955114
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3910428682032487989}
+  m_GameObject: {fileID: 7728501084549955113}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 17, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &5303652012429993655
+--- !u!212 &7728501084549955115
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3910428682032487989}
+  m_GameObject: {fileID: 7728501084549955113}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -72,33 +72,28 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3f741eec3b0d93f49992015cca44945a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5a5320778c4d6f246a4d1a8eb1426d91, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.8, y: 1.8}
+  m_Size: {x: 2.56, y: 2.56}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4096688868259473974
+--- !u!114 &7728501084549955112
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3910428682032487989}
+  m_GameObject: {fileID: 7728501084549955113}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4389faaa5d45bf141b78523273cd31d0, type: 3}
+  m_Script: {fileID: 11500000, guid: e71a897c8704bb044a910e0c267394fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  guzai: {fileID: 3910428682032487989}
-  startObj: {fileID: 762559703569901446, guid: 01658aff18d467b4a940d622449dfa8c, type: 3}
-  endObj: {fileID: 8531982398966349550, guid: cfbc8ed72517eb6499732b6605cef992, type: 3}
-  deg: 65
-  moveData: {fileID: 11400000, guid: 8af19024a61e6ea459425c7fd7bf77cc, type: 2}
-  guzaiImage:
-  - {fileID: 21300000, guid: dfee2886853c3d345b4d51b0c0c5c722, type: 3}
+  dir: 1
+  posX: 0.008

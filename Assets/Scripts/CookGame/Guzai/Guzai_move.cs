@@ -57,6 +57,22 @@ public class Guzai_move : MonoBehaviour,IJudgeEndTime
 
     [SerializeField]
     private Sprite[] guzaiImage;
+    [SerializeField]
+    private Sprite[] guzaiCutImage;
+
+    private CutObjRObjectPool cutR;
+    private CutObjLObjectPool1 cutL;
+    [SerializeField]
+    private GameObject cutRObj;
+    [SerializeField]
+    private GameObject cutLObj;
+
+    [SerializeField]
+    private AudioSource audio;
+    [SerializeField]
+    private AudioClip[] SE;
+
+    int guzaiNum;
 
     public event JudgeTimeEndStorage JudgeTime;//あまかすすーぱーイベント
     private bool IsCut;//切られた野菜かどうか
@@ -83,6 +99,11 @@ public class Guzai_move : MonoBehaviour,IJudgeEndTime
     {
         time = 0;
         InvokeRepeating("PositionMove", 0f, loopTime);
+
+        cutR = GetComponent<CutObjRObjectPool>();
+        cutR.CreatePool(cutRObj, 5);
+        cutL = GetComponent<CutObjLObjectPool1>();
+        cutL.CreatePool(cutLObj, 5);
     }
 
     void PositionMove()
@@ -150,6 +171,7 @@ public class Guzai_move : MonoBehaviour,IJudgeEndTime
 
     void GuzaiJude()
     {
+        //マジックナンバーゴメンほんとにごめん
         bool isOK = Math.Abs(guzai.transform.position.x - endObj.transform.position.x) < 1.5f &&
                     Math.Abs(guzai.transform.position.y - endObj.transform.position.y) < 1.5f + 2.671417f;
         bool isNO = (guzai.transform.position.x - endObj.transform.position.x) < -1.5f &&
@@ -162,7 +184,13 @@ public class Guzai_move : MonoBehaviour,IJudgeEndTime
 
             if (Input.GetKeyDown(KeyCode.Return))
             {
-                //切った生成
+                cutR.GetObject();
+                //cutRObj.GetComponent<SpriteRenderer>().sprite = guzaiCutImage[guzaiNum * 2];
+                cutL.GetObject();
+                //cutLObj.GetComponent<SpriteRenderer>().sprite = guzaiCutImage[guzaiNum * 2 + 1];
+
+                audio.PlayOneShot(SE[0]);
+
                 Debug.Log("cut");
                 RecyclingInitialization();
                 this.gameObject.SetActive(false);
@@ -170,6 +198,9 @@ public class Guzai_move : MonoBehaviour,IJudgeEndTime
             else if (Input.GetKeyDown(KeyCode.Space))
             {
                 //はじいた具材生成
+
+                audio.PlayOneShot(SE[1]);
+
                 Debug.Log("haji");
                 RecyclingInitialization();
                 this.gameObject.SetActive(false);
@@ -197,13 +228,22 @@ public class Guzai_move : MonoBehaviour,IJudgeEndTime
         {
             if (Input.GetKeyDown(KeyCode.Return))
             {
-                //切った生成
+                cutR.GetObject();
+                //cutRObj.GetComponent<SpriteRenderer>().sprite = guzaiCutImage[guzaiNum * 2];
+                cutL.GetObject();
+                //cutLObj.GetComponent<SpriteRenderer>().sprite = guzaiCutImage[guzaiNum * 2 + 1];
+
+                audio.PlayOneShot(SE[0]);
+
                 RecyclingInitialization();
                 this.gameObject.SetActive(false);
             }
             else if (Input.GetKeyDown(KeyCode.Space))
             {
                 //はじいた具材生成
+
+                audio.PlayOneShot(SE[1]);
+
                 RecyclingInitialization();
                 this.gameObject.SetActive(false);
             }
@@ -228,6 +268,7 @@ public class Guzai_move : MonoBehaviour,IJudgeEndTime
         y = 0;
         guzai.transform.position = new Vector2(startObj.transform.position.x, startObj.transform.position.y);
         guzaiPos = startObj.transform.position;
-        this.gameObject.GetComponent<SpriteRenderer>().sprite = guzaiImage[UnityEngine.Random.Range(0, guzaiImage.Length)];
+        guzaiNum = UnityEngine.Random.Range(0, guzaiImage.Length);
+        this.gameObject.GetComponent<SpriteRenderer>().sprite = guzaiImage[guzaiNum];
     }
 }
