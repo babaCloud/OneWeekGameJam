@@ -14,7 +14,7 @@ public class Guzai_move : MonoBehaviour,IJudgeEndTime
     [SerializeField]
     private GameObject guzai; 
     ScoreChange scoreChange;
-  
+    Slower_Animation slowanim;
     // 具材の座標値
     private Vector2 guzaiPos;
     // 代入するx座標とy座標
@@ -90,6 +90,7 @@ public class Guzai_move : MonoBehaviour,IJudgeEndTime
     private void Awake()
     {
         scoreChange = GameObject.Find("ScoreChange").GetComponent<ScoreChange>();
+        slowanim = GameObject.Find("Mob").GetComponent<Slower_Animation>();
         guzaiGenerator = GameObject.Find("GuzaiGenerator").GetComponent<sakuGame.BGM.GuzaiGenerator>();
         startObj.transform.position = new Vector2(guzaiGenerator.StartPos.x, guzaiGenerator.StartPos.y);
         endObj.transform.position = new Vector2(guzaiGenerator.EndPos.x, guzaiGenerator.EndPos.y);
@@ -270,7 +271,8 @@ public class Guzai_move : MonoBehaviour,IJudgeEndTime
         if (notesTime <= 0.0f)
         {
             //anim.Play();
-
+            Debug.Log("うごくぜい");
+            slowanim.SlowAnimation();
             transform.position = new Vector3(startObj.transform.position.x, startObj.transform.position.y, 0f);
             RecyclingInitialization();
             this.gameObject.SetActive(false);
