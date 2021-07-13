@@ -87,6 +87,7 @@ namespace sakuGame
             private const int Dust_MAX = 5;//åÆÇÃç≈çÇê∂ê¨å¬êî
             private const int HAKU_MAX = 5;//åÆÇÃç≈çÇê∂ê¨å¬êî
 
+            private Score.ScoreChange scoreChange;
             public Vector2 StartPos { get; private set; }
             public Vector2 EndPos { get; private set; }
 
@@ -110,8 +111,14 @@ namespace sakuGame
                 hakuObjectPool = GetComponent<HakuObjLObjectPool>();
                 hakuObjectPool.CreatePool(hakuObj, HAKU_MAX);
 
+                scoreChange = new Score.ScoreChange();
 
                 InvokeRepeating("MaterialIns", 0, moveSpan);
+            }
+
+            void Update()
+            {
+                StartCoroutine("FinishGame");
             }
 
             void MaterialIns()
@@ -220,6 +227,15 @@ namespace sakuGame
                 if (Guzai_move.isLast)
                 {
                     cameraAnim.SetBool("cameraMove", true);
+                }
+            }
+
+            IEnumerator FinishGame()
+            {
+                if (!gameAudio.isPlaying && gameAudio.enabled)
+                {
+                    yield return new WaitForSeconds(3.0f);
+                    scoreChange.FinalScoreSend();
                 }
             }
         }

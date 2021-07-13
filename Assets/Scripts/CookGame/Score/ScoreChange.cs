@@ -56,7 +56,7 @@ namespace sakuGame
 
             }
 
-            void FinalScoreSend()
+            public void FinalScoreSend()
             {
                 // 終了時にデータを書き換える
                 scoreData.ResultScore = this.score;
