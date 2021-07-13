@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 5917206481203342551}
   - component: {fileID: -7691678617873535221}
   - component: {fileID: -7138948772153834959}
-  m_Layer: 11
+  m_Layer: 12
   m_Name: haku
-  m_TagString: Dust
+  m_TagString: Haku
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

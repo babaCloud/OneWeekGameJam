@@ -38,7 +38,7 @@ public class Guzai_move : MonoBehaviour,IJudgeEndTime
     // 演算を繰り返す時間
     private float loopTime = 0.01f;
     // フレーム数
-    private const float FREAM = 60f;
+    private const float FREAM = 100f;
 
     // 速度
     // y方向の速度
@@ -79,6 +79,8 @@ public class Guzai_move : MonoBehaviour,IJudgeEndTime
     [SerializeField]
     private AudioClip[] SE;
 
+    public static bool isLast = false;
+
     int guzaiNum;
 
     public event JudgeTimeEndStorage JudgeTime;//あまかすすーぱーイベント
@@ -116,11 +118,12 @@ public class Guzai_move : MonoBehaviour,IJudgeEndTime
     {
         time = 0;
         InvokeRepeating("PositionMove", 0f, loopTime);
+        guzaiNum = UnityEngine.Random.Range(0, guzaiImage.Length);
 
         cutR = GetComponent<CutObjRObjectPool>();
-        cutR.CreatePool(cutRObj, 5);
+        cutR.CreatePool(cutRObj, 2);
         cutL = GetComponent<CutObjLObjectPool1>();
-        cutL.CreatePool(cutLObj, 5);
+        cutL.CreatePool(cutLObj, 2);
         
     }
 
@@ -129,7 +132,7 @@ public class Guzai_move : MonoBehaviour,IJudgeEndTime
         if (this.gameObject.activeSelf)
         {
             // 時間定義
-            time += loopTime;
+            time += Time.deltaTime;
 
             xDist = 6.5f;
 
@@ -150,7 +153,7 @@ public class Guzai_move : MonoBehaviour,IJudgeEndTime
     void NotesJudge()
     {
 
-        switch (this.gameObject.tag)
+        switch (guzai.tag)
         {
             case "First":
                 FirstNotes();
@@ -167,7 +170,6 @@ public class Guzai_move : MonoBehaviour,IJudgeEndTime
             case "Dust":
                 TrushJudge();
                 break;
-
             case "Haku":
                 HakuJudge();
                 break;
@@ -180,6 +182,11 @@ public class Guzai_move : MonoBehaviour,IJudgeEndTime
     {
         if (notesTime <= 0.0f)//カウントダウンした時間が0になったら
         {
+            if (isAudioPlay)
+            {
+                isLast = true;
+            }
+
             isAudioPlay = true;
 
             transform.position = new Vector3(startObj.transform.position.x, startObj.transform.position.y, 0f);
@@ -192,15 +199,22 @@ public class Guzai_move : MonoBehaviour,IJudgeEndTime
     {
         
         //一拍の30%秒の時間判定可能
-        if (Math.Abs(notesTime) <= 60.0f / 130.0f * 0.4f)
+        if (notesTime <= 0)
         {
 
             if (Input.GetKeyDown(KeyCode.Return) || Input.GetMouseButtonDown(0))
             {
-                cutR.GetObject();
-                //cutRObj.GetComponent<SpriteRenderer>().sprite = guzaiCutImage[guzaiNum * 2];
-                cutL.GetObject();
-                //cutLObj.GetComponent<SpriteRenderer>().sprite = guzaiCutImage[guzaiNum * 2 + 1];
+                cutR.GetObject();               
+                cutL.GetObject();               
+
+                for(int i = 0; i < guzaiImage.Length; i++)
+                {
+                    if(guzai.GetComponent<SpriteRenderer>().sprite.name == guzaiImage[i].name)
+                    {
+                        cutRObj.GetComponent<SpriteRenderer>().sprite = guzaiCutImage[i * 2];
+                        cutLObj.GetComponent<SpriteRenderer>().sprite = guzaiCutImage[i * 2 + 1];
+                    }
+                }
 
                 audio.PlayOneShot(SE[0]);
 
@@ -223,7 +237,7 @@ public class Guzai_move : MonoBehaviour,IJudgeEndTime
                 this.gameObject.SetActive(false);
             }
         }
-        else if (notesTime < 60.0f / 130.0f * -0.4f)
+        else if (notesTime < 60.0f / 130.0f * -1)
         {
             //CallJudgeEndEvent(guzai.GetComponent<Guzai_Core>().GetItemName(), false);//スコア送る
             scoreChange.ReceiveItem(guzai.GetComponent<Guzai_Core>().GetItemName(), false);
@@ -238,21 +252,28 @@ public class Guzai_move : MonoBehaviour,IJudgeEndTime
     {
       
         //一拍の30%秒の時間判定可能
-        if (Math.Abs(notesTime) <= 60.0f / 130.0f * 0.4f)
+        if (notesTime <= 0)
         {
-            if (Input.GetKeyDown(KeyCode.Return))
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetMouseButtonDown(0))
             {
                 cutR.GetObject();
-                //cutRObj.GetComponent<SpriteRenderer>().sprite = guzaiCutImage[guzaiNum * 2];
                 cutL.GetObject();
-                //cutLObj.GetComponent<SpriteRenderer>().sprite = guzaiCutImage[guzaiNum * 2 + 1];
+
+                for (int i = 0; i < guzaiImage.Length; i++)
+                {
+                    if (guzai.GetComponent<SpriteRenderer>().sprite.name == guzaiImage[i].name)
+                    {
+                        cutRObj.GetComponent<SpriteRenderer>().sprite = guzaiCutImage[i * 2];
+                        cutLObj.GetComponent<SpriteRenderer>().sprite = guzaiCutImage[i * 2 + 1];
+                    }
+                }
 
                 audio.PlayOneShot(SE[0]);
 
                 RecyclingInitialization();
                 this.gameObject.SetActive(false);
             }
-            else if (Input.GetKeyDown(KeyCode.Space))
+            else if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(1))
             {
                 //はじいた具材生成
 
@@ -262,7 +283,7 @@ public class Guzai_move : MonoBehaviour,IJudgeEndTime
                 this.gameObject.SetActive(false);
             }
         }
-        else if (notesTime < 60.0f / 130.0f * -0.4f)
+        else if (notesTime < 60.0f / 130.0f * -1)
         {
             //入れた具材生成
 
@@ -273,11 +294,18 @@ public class Guzai_move : MonoBehaviour,IJudgeEndTime
 
     void HakuJudge()
     {
+
         if (notesTime <= 0.0f)
         {
             //anim.Play();
+<<<<<<< HEAD
+
+            Debug.Log("kuhdga");
+
+=======
             Debug.Log("うごくぜい");
             slowanim.SlowAnimation();
+>>>>>>> 0f79f56b6d3ef4a60ac41c4dc9e2a36a323cfc45
             transform.position = new Vector3(startObj.transform.position.x, startObj.transform.position.y, 0f);
             RecyclingInitialization();
             this.gameObject.SetActive(false);
