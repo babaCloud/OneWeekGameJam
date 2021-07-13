@@ -70,7 +70,7 @@ namespace sakuGame
                 loadScene.LoadScene("Result");
             }
 
-            public void ReceiveItem(ItemNames _item,bool _isSlash)
+            public  void ReceiveItem(ItemNames _item,bool _isSlash)
             {
                 // ‹ïŞ‚É‘Î‰‚µ‚½ƒ|ƒCƒ“ƒg‚ğ‰ÁŒ¸‚·‚é
 
