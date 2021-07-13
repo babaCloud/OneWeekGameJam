@@ -12,7 +12,8 @@ public class Guzai_move : MonoBehaviour,IJudgeEndTime
     // オブジェクト情報
     // 具材オブジェクト
     [SerializeField]
-    private GameObject guzai; 
+    private GameObject guzai;
+    Player_Smail player_Smail;
     ScoreChange scoreChange;
     Slower_Animation slowanim;
     // 具材の座標値
@@ -92,6 +93,7 @@ public class Guzai_move : MonoBehaviour,IJudgeEndTime
         isAudioPlay = false;
         notesTime = notesTime = (60.0f / 130.0f * 4) - time;
 
+        player_Smail = GameObject.Find("Face").GetComponent<Player_Smail>();
         scoreChange = GameObject.Find("ScoreChange").GetComponent<ScoreChange>();
         slowanim = GameObject.Find("Mob").GetComponent<Slower_Animation>();
         guzaiGenerator = GameObject.Find("GuzaiGenerator").GetComponent<sakuGame.BGM.GuzaiGenerator>();
@@ -208,7 +210,7 @@ public class Guzai_move : MonoBehaviour,IJudgeEndTime
                 scoreChange.ReceiveItem(guzai.GetComponent<Guzai_Core>().GetItemName(), true);
                 if(guzai.GetComponent<Guzai_Core>().GetItemName()==ItemNames.Meat)
                 {
-                    //MeetCutEvent();
+                    player_Smail.SmileSpr();
                 }
             }
             else if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(1))

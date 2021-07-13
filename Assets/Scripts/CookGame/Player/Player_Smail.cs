@@ -34,7 +34,7 @@ public class Player_Smail : MonoBehaviour
             spr.sprite = Normal;
         }
     }
-    void SmileSpr()
+    public void SmileSpr()
     {
         if(!isSmile)
         {
