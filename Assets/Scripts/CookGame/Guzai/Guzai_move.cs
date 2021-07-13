@@ -298,14 +298,9 @@ public class Guzai_move : MonoBehaviour,IJudgeEndTime
         if (notesTime <= 0.0f)
         {
             //anim.Play();
-<<<<<<< HEAD
 
             Debug.Log("kuhdga");
 
-=======
-            Debug.Log("‚¤‚²‚­‚º‚¢");
-            slowanim.SlowAnimation();
->>>>>>> 0f79f56b6d3ef4a60ac41c4dc9e2a36a323cfc45
             transform.position = new Vector3(startObj.transform.position.x, startObj.transform.position.y, 0f);
             RecyclingInitialization();
             this.gameObject.SetActive(false);
