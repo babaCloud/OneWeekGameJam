@@ -32,7 +32,6 @@ namespace sakuGame
             
             void SlashAnim(MouseClick mouseClick)//ƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚½‚Æ‚«
             {
-                Debug.Log("‚¨‚³‚ê‚½");
                 if(!IsSlash)
                 {
                     IsSlash = true;

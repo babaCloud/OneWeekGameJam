@@ -10,8 +10,8 @@ public class Player_Smail : MonoBehaviour
     Sprite Normal;
     [SerializeField]
     Sprite Smail;
-    [Inject]
-    IMeetCut meetCut;
+    //[Inject]
+    //IMeetCut meetCut;
     bool isSmile;
     float Timecount;
         // Start is called before the first frame update

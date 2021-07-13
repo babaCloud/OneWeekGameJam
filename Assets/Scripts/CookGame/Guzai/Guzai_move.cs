@@ -124,7 +124,7 @@ public class Guzai_move : MonoBehaviour,IJudgeEndTime
         cutR.CreatePool(cutRObj, 2);
         cutL = GetComponent<CutObjLObjectPool1>();
         cutL.CreatePool(cutLObj, 2);
-        
+        Debug.Log(player_Smail);
     }
 
     void PositionMove()

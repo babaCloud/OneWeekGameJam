@@ -10,7 +10,7 @@ namespace sakuGame
     {
         public class ScoreChange : MonoBehaviour
         {
-            [Inject]
+            [SerializeField] GameObject bgmobj;
             IWhenEndBgm whenEndBgm;
             [Inject]
             IJudgeEndTime judgeEnd;
@@ -46,7 +46,8 @@ namespace sakuGame
 
             void Start()
             {
-                //whenEndBgm.EndGameEvent += FinalScoreSend;
+                whenEndBgm = bgmobj.GetComponent<IWhenEndBgm>();
+                whenEndBgm.EndGameEvent += FinalScoreSend;
                 //judgeEnd.JudgeTime += ReceiveItem;
             }
 

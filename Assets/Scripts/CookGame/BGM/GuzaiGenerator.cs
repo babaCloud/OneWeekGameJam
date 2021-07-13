@@ -235,7 +235,8 @@ namespace sakuGame
                 if (!gameAudio.isPlaying && gameAudio.enabled)
                 {
                     yield return new WaitForSeconds(3.0f);
-                    scoreChange.FinalScoreSend();
+                    //scoreChange.FinalScoreSend();
+                    EndGameEvent();
                 }
             }
         }
