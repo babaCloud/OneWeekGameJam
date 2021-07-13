@@ -34,7 +34,7 @@ public class Guzai_move : MonoBehaviour,IJudgeEndTime
     // 演算を繰り返す時間
     private float loopTime = 0.01f;
     // フレーム数
-    private const float FREAM = 60f;
+    private const float FREAM = 100f;
 
     // 速度
     // y方向の速度
@@ -156,7 +156,6 @@ public class Guzai_move : MonoBehaviour,IJudgeEndTime
             case "Dust":
                 TrushJudge();
                 break;
-
             case "Haku":
                 HakuJudge();
                 break;
