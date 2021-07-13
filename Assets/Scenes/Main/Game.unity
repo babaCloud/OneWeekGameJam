@@ -399,6 +399,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6312818914262299842, guid: 82bc31e315198464a83f050a8d9cf5ea, type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6312818915007543954, guid: 82bc31e315198464a83f050a8d9cf5ea, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -458,6 +462,18 @@ PrefabInstance:
     - target: {fileID: 6312818915007543957, guid: 82bc31e315198464a83f050a8d9cf5ea, type: 3}
       propertyPath: m_Name
       value: Player (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6312818915654264277, guid: 82bc31e315198464a83f050a8d9cf5ea, type: 3}
+      propertyPath: m_SortingOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6312818915849964864, guid: 82bc31e315198464a83f050a8d9cf5ea, type: 3}
+      propertyPath: m_SortingOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6312818915970031539, guid: 82bc31e315198464a83f050a8d9cf5ea, type: 3}
+      propertyPath: m_SortingOrder
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82bc31e315198464a83f050a8d9cf5ea, type: 3}
@@ -728,7 +744,7 @@ MonoBehaviour:
   meetObj: {fileID: 5368392555563456390, guid: 9ed0df8ffe4cfc047ace322b5298c64f, type: 3}
   keyObj: {fileID: 3910428682032487989, guid: 208242dd8f2a8b84aa355bc5c2918bcd, type: 3}
   dustObj: {fileID: 308907306441992238, guid: 6271203fb7662a04481180fa6ad37692, type: 3}
-  hakuObj: {fileID: 0}
+  hakuObj: {fileID: 308907306441992238, guid: efd16bc5975f1604db5faa08aeef01dd, type: 3}
   inputDeleagate2Obj: {fileID: 0}
   gameAudio: {fileID: 7683632338080329700}
 --- !u!4 &7683632336617614033
@@ -812,6 +828,7 @@ GameObject:
   - component: {fileID: 7683632336617614029}
   - component: {fileID: 7683632336617614030}
   - component: {fileID: 7683632336617614031}
+  - component: {fileID: 7683632336617614036}
   m_Layer: 0
   m_Name: GuzaiGenerator
   m_TagString: Untagged
@@ -819,6 +836,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &7683632336617614036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7683632336617614035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d181fd3a1e764c4eaa8c77c7296b02d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!222 &7683632336638676871
 CanvasRenderer:
   m_ObjectHideFlags: 0
