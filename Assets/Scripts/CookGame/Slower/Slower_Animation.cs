@@ -15,7 +15,7 @@ public class Slower_Animation : MonoBehaviour
         //when_RhythmTiming.RhythmTimingEvent += StayAnimaTion;
         //when_SlowTiming.NowSlowEvent += SlowAnimation;
 
-        
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
