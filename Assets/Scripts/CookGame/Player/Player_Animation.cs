@@ -41,11 +41,11 @@ namespace sakuGame
                     //アニメーション
                 }
             }
-            void OnRhythm()
+            public void OnRhythm()
             {
                 if(IsSlash)//切ってるときはしないよ
                 {
-                    //あにめ
+                    animator.SetTrigger("Rythm");
                 }
             }
            public void FinishCut()
