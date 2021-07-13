@@ -89,6 +89,9 @@ public class Guzai_move : MonoBehaviour,IJudgeEndTime
 
     private void Awake()
     {
+        isAudioPlay = false;
+        notesTime = notesTime = (60.0f / 130.0f * 4) - time;
+
         scoreChange = GameObject.Find("ScoreChange").GetComponent<ScoreChange>();
         guzaiGenerator = GameObject.Find("GuzaiGenerator").GetComponent<sakuGame.BGM.GuzaiGenerator>();
         startObj.transform.position = new Vector2(guzaiGenerator.StartPos.x, guzaiGenerator.StartPos.y);
