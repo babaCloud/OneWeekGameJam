@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5f0840bfb5a76a49a7b8bc59b5efe1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bgmobj: {fileID: 0}
   scoreData: {fileID: 11400000, guid: 07b86831e41b3b1409b6baf797b93b57, type: 2}
   loadScene: {fileID: 502568574}
 --- !u!4 &134820125
@@ -334,6 +335,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c57d128bc6437f449a9b07298801bfd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &573742222 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2278340464796375111, guid: eb88e367de7e0df45930b6206455260a, type: 3}
+  m_PrefabInstance: {fileID: 959347176}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &638366898
 GameObject:
   m_ObjectHideFlags: 0
@@ -768,6 +774,7 @@ MonoBehaviour:
   dustObj: {fileID: 308907306441992238, guid: 6271203fb7662a04481180fa6ad37692, type: 3}
   hakuObj: {fileID: 308907306441992238, guid: efd16bc5975f1604db5faa08aeef01dd, type: 3}
   inputDeleagate2Obj: {fileID: 0}
+  mob: {fileID: 573742222}
   gameAudio: {fileID: 7683632338080329700}
   cameraAnim: {fileID: 7683632338080329705}
 --- !u!4 &7683632336617614033

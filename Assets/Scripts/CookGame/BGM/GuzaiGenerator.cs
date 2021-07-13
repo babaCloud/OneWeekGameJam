@@ -56,6 +56,8 @@ namespace sakuGame
             private GameObject hakuObj;
             [SerializeField]
             private GameObject inputDeleagate2Obj;
+            [SerializeField]
+            private Animator mob;
 
             [SerializeField]
             private AudioSource gameAudio;
@@ -178,6 +180,8 @@ namespace sakuGame
                 //生成のタイミングなら
                 if (isBeat)
                 {
+                    mob.SetTrigger("Throw");
+
                     //ノーツの生成(フラグ)
                     if (scoreBlock[beatCount] == 0)
                     {
