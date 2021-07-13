@@ -89,6 +89,9 @@ public class Guzai_move : MonoBehaviour,IJudgeEndTime
 
     private void Awake()
     {
+        isAudioPlay = false;
+        notesTime = notesTime = (60.0f / 130.0f * 4) - time;
+
         scoreChange = GameObject.Find("ScoreChange").GetComponent<ScoreChange>();
         slowanim = GameObject.Find("Mob").GetComponent<Slower_Animation>();
         guzaiGenerator = GameObject.Find("GuzaiGenerator").GetComponent<sakuGame.BGM.GuzaiGenerator>();
