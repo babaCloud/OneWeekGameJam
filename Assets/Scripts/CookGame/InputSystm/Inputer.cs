@@ -10,7 +10,7 @@ namespace sakuGame.InputSystem
 
         public event InputDelgate InputEvent;
 
-        [Inject] IInputer inputer;  
+       
         // Start is called before the first frame update
         void Start()
         {

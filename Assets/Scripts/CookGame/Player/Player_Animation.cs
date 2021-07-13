@@ -10,28 +10,29 @@ namespace sakuGame
     {
         public class Player_Animation : MonoBehaviour
         {
-            [Inject]
+            [SerializeField] GameObject inputerObj;
             IInputer inputer;
             [Inject]
             IWhen_RhythmTiming rhythmTiming;
             private bool IsSlash;//ç°êÿÇ¡ÇƒÇ¢ÇΩÇÁTRUE
-            private int SlashAnimCount;
             Animator animator;
             void Start()
             {
+                inputer = inputerObj.GetComponent<IInputer>();
                 inputer.InputEvent += SlashAnim;
-                rhythmTiming.RhythmTimingEvent += OnRhythm;
+                //rhythmTiming.RhythmTimingEvent += OnRhythm;
                 IsSlash = false;
                 animator = GetComponent<Animator>();
             }
 
             void Update()
             {
-
+                
             }
             
             void SlashAnim(MouseClick mouseClick)//É{É^ÉìÇ™âüÇ≥ÇÍÇΩÇ∆Ç´
             {
+                Debug.Log("Ç®Ç≥ÇÍÇΩ");
                 if(!IsSlash)
                 {
                     IsSlash = true;

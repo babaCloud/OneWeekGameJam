@@ -5,13 +5,16 @@ using System;
 using sakuGame.Guzai;
 using sakuGame;
 using sakuGame.BGM;
+using sakuGame.Score;
 
 public class Guzai_move : MonoBehaviour,IJudgeEndTime
 {
     // オブジェクト情報
     // 具材オブジェクト
     [SerializeField]
-    private GameObject guzai;
+    private GameObject guzai; 
+    ScoreChange scoreChange;
+  
     // 具材の座標値
     private Vector2 guzaiPos;
     // 代入するx座標とy座標
@@ -86,6 +89,7 @@ public class Guzai_move : MonoBehaviour,IJudgeEndTime
 
     private void Awake()
     {
+        scoreChange = GameObject.Find("ScoreChange").GetComponent<ScoreChange>();
         guzaiGenerator = GameObject.Find("GuzaiGenerator").GetComponent<sakuGame.BGM.GuzaiGenerator>();
         startObj.transform.position = new Vector2(guzaiGenerator.StartPos.x, guzaiGenerator.StartPos.y);
         endObj.transform.position = new Vector2(guzaiGenerator.EndPos.x, guzaiGenerator.EndPos.y);
@@ -111,6 +115,7 @@ public class Guzai_move : MonoBehaviour,IJudgeEndTime
         cutR.CreatePool(cutRObj, 5);
         cutL = GetComponent<CutObjLObjectPool1>();
         cutL.CreatePool(cutLObj, 5);
+        
     }
 
     void PositionMove()
@@ -184,7 +189,7 @@ public class Guzai_move : MonoBehaviour,IJudgeEndTime
         if (Math.Abs(notesTime) <= 60.0f / 130.0f * 0.4f)
         {
 
-            if (Input.GetKeyDown(KeyCode.Return))
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetMouseButtonDown(0))
             {
                 cutR.GetObject();
                 //cutRObj.GetComponent<SpriteRenderer>().sprite = guzaiCutImage[guzaiNum * 2];
@@ -196,12 +201,13 @@ public class Guzai_move : MonoBehaviour,IJudgeEndTime
                 RecyclingInitialization();
                 this.gameObject.SetActive(false);
                 //CallJudgeEndEvent(guzai.GetComponent<Guzai_Core>().GetItemName(), true);//スコア送る
+                scoreChange.ReceiveItem(guzai.GetComponent<Guzai_Core>().GetItemName(), true);
                 if(guzai.GetComponent<Guzai_Core>().GetItemName()==ItemNames.Meat)
                 {
-                    MeetCutEvent();
+                    //MeetCutEvent();
                 }
             }
-            else if (Input.GetKeyDown(KeyCode.Space))
+            else if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(1))
             {
                 //はじいた具材生成
 
@@ -214,6 +220,7 @@ public class Guzai_move : MonoBehaviour,IJudgeEndTime
         else if (notesTime < 60.0f / 130.0f * -0.4f)
         {
             //CallJudgeEndEvent(guzai.GetComponent<Guzai_Core>().GetItemName(), false);//スコア送る
+            scoreChange.ReceiveItem(guzai.GetComponent<Guzai_Core>().GetItemName(), false);
             RecyclingInitialization();
             this.gameObject.SetActive(false);
         }

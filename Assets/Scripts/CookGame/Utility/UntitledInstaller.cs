@@ -30,7 +30,7 @@ public class UntitledInstaller : MonoInstaller
 
 
         Container.Bind<IWhenEndBgm>()
-           .To<TempoGenerator>()
+           .To<GuzaiGenerator>()
            .FromComponentOn(TempoObj)
            .AsCached();
 
@@ -41,7 +41,7 @@ public class UntitledInstaller : MonoInstaller
         //    .AsTransient();
 
         Container.Bind<IMeetCut>()
-            .To<Guzai_move>()
+            .To<GuzaiGenerator>()
             .FromComponentOn(TempoObj)
             .AsCached();
         Container.Bind<IJudgeEndTime>()
@@ -49,11 +49,11 @@ public class UntitledInstaller : MonoInstaller
             .FromComponentOn(CanslashObj)
             .AsCached();
         Container.Bind<IWhen_RhythmTiming>()
-            .To<Guzai_move>()
+            .To<GuzaiGenerator>()
             .FromComponentOn(TempoObj)
             .AsCached();
         Container.Bind<IWhen_SlowTiming>()
-            .To<Guzai_move>()
+            .To<GuzaiGenerator>()
             .FromComponentOn(TempoObj)
             .AsCached();
 

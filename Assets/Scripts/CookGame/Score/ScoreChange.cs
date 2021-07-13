@@ -46,8 +46,8 @@ namespace sakuGame
 
             void Start()
             {
-                whenEndBgm.EndGameEvent += FinalScoreSend;
-                judgeEnd.JudgeTime += ReceiveItem;
+                //whenEndBgm.EndGameEvent += FinalScoreSend;
+                //judgeEnd.JudgeTime += ReceiveItem;
             }
 
             // Update is called once per frame
@@ -70,7 +70,7 @@ namespace sakuGame
                 loadScene.LoadScene("Result");
             }
 
-            void ReceiveItem(ItemNames _item,bool _isSlash)
+            public void ReceiveItem(ItemNames _item,bool _isSlash)
             {
                 // ‹ïŞ‚É‘Î‰‚µ‚½ƒ|ƒCƒ“ƒg‚ğ‰ÁŒ¸‚·‚é
 

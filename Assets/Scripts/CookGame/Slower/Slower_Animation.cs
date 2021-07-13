@@ -30,7 +30,7 @@ public class Slower_Animation : MonoBehaviour
     void SlowAnimation(GuzaiEnum guzaiEnum)
     {
         _ = guzaiEnum;//ˆø”g‚¢‚Ü‚¹‚ñ@ˆø””jŠü
-
+        animator.SetTrigger("Throw");   
     }
 
 }
