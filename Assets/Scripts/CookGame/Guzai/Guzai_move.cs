@@ -224,6 +224,7 @@ public class Guzai_move : MonoBehaviour,IJudgeEndTime
                 scoreChange.ReceiveItem(guzai.GetComponent<Guzai_Core>().GetItemName(), true);
                 if(guzai.GetComponent<Guzai_Core>().GetItemName()==ItemNames.Meat)
                 {
+                    player_Smail ??= GameObject.Find("Face").GetComponent<Player_Smail>(); 
                     player_Smail.SmileSpr();
                 }
             }

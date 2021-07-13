@@ -18,6 +18,7 @@ public class Player_Smail : MonoBehaviour
     void Start()
     {
         //meetCut.MeetCutEvent+=SmileSpr;
+        spr = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -27,7 +28,7 @@ public class Player_Smail : MonoBehaviour
         {
             Timecount += Time.deltaTime;
         }
-        if(Timecount>1.5f)
+        if(Timecount>0.5f)
         {
             Timecount = 0;
             isSmile = false;
@@ -38,6 +39,7 @@ public class Player_Smail : MonoBehaviour
     {
         if(!isSmile)
         {
+            Timecount = 0;
             spr.sprite = Smail;
         }
     }
