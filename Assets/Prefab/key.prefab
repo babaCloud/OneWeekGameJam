@@ -249,7 +249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d671b99c31c5e5546b04b7f21da8fb0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  guzaiName: 0
+  guzaiName: 10
 --- !u!114 &-514206001116411231
 MonoBehaviour:
   m_ObjectHideFlags: 0

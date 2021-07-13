@@ -17,7 +17,7 @@ public class Player_Smail : MonoBehaviour
         // Start is called before the first frame update
     void Start()
     {
-        meetCut.MeetCutEvent+=SmileSpr;
+        //meetCut.MeetCutEvent+=SmileSpr;
     }
 
     // Update is called once per frame
