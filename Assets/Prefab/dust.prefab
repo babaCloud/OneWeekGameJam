@@ -112,7 +112,17 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 0e563648773c8474b9b3c2d84ed864f9, type: 3}
   - {fileID: 21300000, guid: 1b5d003147fa0ec4a9189769e14953ff, type: 3}
   - {fileID: 21300000, guid: 2694be4ef1cbe8848a038b1b89ae6a90, type: 3}
-  guzaiCutImage: []
+  guzaiCutImage:
+  - {fileID: 21300000, guid: 4c46b9f25f43e7f48a2670c943a46567, type: 3}
+  - {fileID: 21300000, guid: e6d998ebb9a7c73458b430f73c8fa43d, type: 3}
+  - {fileID: 21300000, guid: 34ec74faa56c30745bd02d1f251750f8, type: 3}
+  - {fileID: 21300000, guid: f33fabb064ff67a4f9c3bcc9df2ceb4d, type: 3}
+  - {fileID: 21300000, guid: 67bd6e4b8cd8b2449819e002f16eb661, type: 3}
+  - {fileID: 21300000, guid: 16b4eb891d4faec4da4d848edc368612, type: 3}
+  - {fileID: 21300000, guid: 2b6821226d34c5948bc7ba23f9e3820e, type: 3}
+  - {fileID: 21300000, guid: 3d2c51c3348e22d4b8d3dcf2dba3dde5, type: 3}
+  - {fileID: 21300000, guid: a60ff9fc94105b249aa0997179758320, type: 3}
+  - {fileID: 21300000, guid: 9cd8aa7e3daaaa14da37d9604631033f, type: 3}
   cutRObj: {fileID: 62577147026132191, guid: 2e9f2be286d4f104b8d06093eb589c8b, type: 3}
   cutLObj: {fileID: 7728501084549955113, guid: b8ba052750a994c45a65f500d3bed2d8, type: 3}
   audio: {fileID: 4324631208025597501}

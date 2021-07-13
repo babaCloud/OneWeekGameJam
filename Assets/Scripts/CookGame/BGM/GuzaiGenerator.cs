@@ -59,6 +59,8 @@ namespace sakuGame
 
             [SerializeField]
             private AudioSource gameAudio;
+            [SerializeField]
+            private Animator cameraAnim;
 
             private int[] scoreNum;//‰¹•„‚Ì”Ô†‚ğ‡‚É“ü‚ê‚é
             private int[] scoreBlock;//‰¹•„‚Ìí—Ş‚ğ‡‚É“ü‚ê‚é
@@ -116,6 +118,7 @@ namespace sakuGame
             {
                 GetScoreTime();
                 NotesIns();
+                CameraZoom();
                 AudioPlay(Guzai_move.isAudioPlay);
             }
 
@@ -209,6 +212,14 @@ namespace sakuGame
                 if (_flag)
                 {
                     gameAudio.enabled = true;
+                }
+            }
+
+            void CameraZoom()
+            {
+                if (Guzai_move.isLast)
+                {
+                    cameraAnim.SetBool("cameraMove", true);
                 }
             }
         }

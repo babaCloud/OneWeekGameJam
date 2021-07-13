@@ -108,7 +108,9 @@ MonoBehaviour:
   moveData: {fileID: 11400000, guid: 8af19024a61e6ea459425c7fd7bf77cc, type: 2}
   guzaiImage:
   - {fileID: 21300000, guid: bf3c6029a1565904ca6b4700a3c2a1e9, type: 3}
-  guzaiCutImage: []
+  guzaiCutImage:
+  - {fileID: 21300000, guid: 1f755eed98fb2a140b6dc46c9cbcf78f, type: 3}
+  - {fileID: 21300000, guid: 359c4a69c61d0924b86fe86b878ce535, type: 3}
   cutRObj: {fileID: 62577147026132191, guid: 2e9f2be286d4f104b8d06093eb589c8b, type: 3}
   cutLObj: {fileID: 7728501084549955113, guid: b8ba052750a994c45a65f500d3bed2d8, type: 3}
   audio: {fileID: 4667527403041843575}
