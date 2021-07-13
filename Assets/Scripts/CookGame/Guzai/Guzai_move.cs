@@ -6,13 +6,14 @@ using sakuGame.Guzai;
 using sakuGame;
 using sakuGame.BGM;
 using sakuGame.Score;
-
+using sakuGame.Player
 public class Guzai_move : MonoBehaviour,IJudgeEndTime
 {
     // オブジェクト情報
     // 具材オブジェクト
     [SerializeField]
     private GameObject guzai;
+    Player_Animation plAnim;
     Player_Smail player_Smail;
     ScoreChange scoreChange;
     Slower_Animation slowanim;
@@ -299,7 +300,7 @@ public class Guzai_move : MonoBehaviour,IJudgeEndTime
         if (notesTime <= 0.0f)
         {
             //anim.Play();
-
+            plAnim.OnRhythm();
             Debug.Log("kuhdga");
 
             transform.position = new Vector3(startObj.transform.position.x, startObj.transform.position.y, 0f);
