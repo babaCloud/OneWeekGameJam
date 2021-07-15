@@ -6,7 +6,7 @@ using sakuGame.Guzai;
 using sakuGame;
 using sakuGame.BGM;
 using sakuGame.Score;
-using sakuGame.Player
+using sakuGame.Player;
 public class Guzai_move : MonoBehaviour,IJudgeEndTime
 {
     // オブジェクト情報
@@ -300,8 +300,8 @@ public class Guzai_move : MonoBehaviour,IJudgeEndTime
         if (notesTime <= 0.0f)
         {
             //anim.Play();
-            plAnim.OnRhythm();
-            Debug.Log("kuhdga");
+            //plAnim = GameObject.Find("Player").GetComponent<Player_Animation>();
+            //plAnim.OnRhythm();
 
             transform.position = new Vector3(startObj.transform.position.x, startObj.transform.position.y, 0f);
             RecyclingInitialization();
