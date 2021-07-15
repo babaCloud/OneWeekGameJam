@@ -237,7 +237,7 @@ MonoBehaviour:
   delay: 0
   style: 1
   playOnAwake: 1
-  m_progress: 0.22222222
+  m_progress: 0.19721864
   usePosition: 1
   useRotation: 0
   useScale: 0
@@ -633,7 +633,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 30
   m_TargetDisplay: 0
 --- !u!224 &917898390
 RectTransform:
